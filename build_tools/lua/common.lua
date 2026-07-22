@@ -480,11 +480,11 @@ local function read_wav_file(input_file_path)
 			audio.sample_rate = 8000
 			audio.bytes_per_sample = 1
 
-			for chunk_id, chunk_size_128 in function() return read_chunk_header(input_file) end do
+			for chunk_id, chunk_size in function() return read_chunk_header(input_file) end do
 				local starting_position = input_file:seek()
 
 				if chunk_id == "fmt " then
-					if chunk_size_check("Format", chunk_size_128, 16) then
+					if chunk_size_check("Format", chunk_size, 16) then
 						local format = read_u16le(input_file)
 						audio.channels = read_u16le(input_file)
 						audio.sample_rate = read_u32le(input_file)
@@ -508,13 +508,13 @@ local function read_wav_file(input_file_path)
 					end
 
 					audio.samples = {}
-					for _ = 1, chunk_size_128, audio.bytes_per_sample do
+					for _ = 1, chunk_size, audio.bytes_per_sample do
 						audio.samples[1 + #audio.samples] = read_signed_sample()
 					end
 				end
 
 				-- Advance past the chunk.
-				input_file:seek("set", starting_position + chunk_size_128)
+				input_file:seek("set", starting_position + chunk_size)
 			end
 		end
 

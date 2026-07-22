@@ -1,10 +1,8 @@
-*.lua text eol=lf
-
-*.asm text=auto
-
-*.bin binary
-
-*.nem binary
-*.kos binary
-*.eni binary
-*.kc binary
+*.asm		text
+*.txt		text
+*.xml		text
+*.cs		text
+*.ini		text
+*.bin		binary
+*.pcm		binary
+*.dpcm		binary

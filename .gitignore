@@ -1,17 +1,16 @@
-Utility Project Files/SonLVL INI Files/dllcache
-Utility Project Files/SonLVL INI Files/SonLVL.log
-Utility Project Files/SonPLN.log
+desktop.ini
+
+SonLVL INI Files/dllcache
+SonLVL INI Files/SonLVL.log
 *~
 
 # Misc. compiler output.
-main.p
-main.lst
-main.log
+s2.h
+s2.p
+s2.lst
+s2.log
+s2.map
 
 # Built ROMs.
 s2built.bin
 s2built.prev.bin
-
-# Hivebrains comment utility
-Comment.bat
-Comment.exe

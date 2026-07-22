@@ -1,792 +1,824 @@
-Map_Tails_internal:	mappingsTable
-	mappingsTableEntry.w	Map_Tails_internal_010A
-	mappingsTableEntry.w	Map_Tails_internal_010C
-	mappingsTableEntry.w	Map_Tails_internal_011E
-	mappingsTableEntry.w	Map_Tails_internal_0130
-	mappingsTableEntry.w	Map_Tails_internal_0142
-	mappingsTableEntry.w	Map_Tails_internal_0154
-	mappingsTableEntry.w	Map_Tails_internal_015E
-	mappingsTableEntry.w	Map_Tails_internal_0168
-	mappingsTableEntry.w	Map_Tails_internal_017A
-	mappingsTableEntry.w	Map_Tails_internal_018C
-	mappingsTableEntry.w	Map_Tails_internal_0196
-	mappingsTableEntry.w	Map_Tails_internal_01A0
-	mappingsTableEntry.w	Map_Tails_internal_01AA
-	mappingsTableEntry.w	Map_Tails_internal_01B4
-	mappingsTableEntry.w	Map_Tails_internal_01BE
-	mappingsTableEntry.w	Map_Tails_internal_01D8
-	mappingsTableEntry.w	Map_Tails_internal_01F2
-	mappingsTableEntry.w	Map_Tails_internal_020C
-	mappingsTableEntry.w	Map_Tails_internal_0226
-	mappingsTableEntry.w	Map_Tails_internal_0240
-	mappingsTableEntry.w	Map_Tails_internal_025A
-	mappingsTableEntry.w	Map_Tails_internal_0274
-	mappingsTableEntry.w	Map_Tails_internal_028E
-	mappingsTableEntry.w	Map_Tails_internal_02A8
-	mappingsTableEntry.w	Map_Tails_internal_02C2
-	mappingsTableEntry.w	Map_Tails_internal_02DC
-	mappingsTableEntry.w	Map_Tails_internal_02F6
-	mappingsTableEntry.w	Map_Tails_internal_0310
-	mappingsTableEntry.w	Map_Tails_internal_032A
-	mappingsTableEntry.w	Map_Tails_internal_0344
-	mappingsTableEntry.w	Map_Tails_internal_035E
-	mappingsTableEntry.w	Map_Tails_internal_0378
-	mappingsTableEntry.w	Map_Tails_internal_0392
-	mappingsTableEntry.w	Map_Tails_internal_03AC
-	mappingsTableEntry.w	Map_Tails_internal_03C6
-	mappingsTableEntry.w	Map_Tails_internal_03E0
-	mappingsTableEntry.w	Map_Tails_internal_03FA
-	mappingsTableEntry.w	Map_Tails_internal_0414
-	mappingsTableEntry.w	Map_Tails_internal_042E
-	mappingsTableEntry.w	Map_Tails_internal_0440
-	mappingsTableEntry.w	Map_Tails_internal_045A
-	mappingsTableEntry.w	Map_Tails_internal_046C
-	mappingsTableEntry.w	Map_Tails_internal_0486
-	mappingsTableEntry.w	Map_Tails_internal_0498
-	mappingsTableEntry.w	Map_Tails_internal_04B2
-	mappingsTableEntry.w	Map_Tails_internal_04C4
-	mappingsTableEntry.w	Map_Tails_internal_04DE
-	mappingsTableEntry.w	Map_Tails_internal_04F0
-	mappingsTableEntry.w	Map_Tails_internal_0502
-	mappingsTableEntry.w	Map_Tails_internal_0514
-	mappingsTableEntry.w	Map_Tails_internal_0526
-	mappingsTableEntry.w	Map_Tails_internal_0538
-	mappingsTableEntry.w	Map_Tails_internal_054A
-	mappingsTableEntry.w	Map_Tails_internal_0564
-	mappingsTableEntry.w	Map_Tails_internal_057E
-	mappingsTableEntry.w	Map_Tails_internal_0598
-	mappingsTableEntry.w	Map_Tails_internal_05B2
-	mappingsTableEntry.w	Map_Tails_internal_05CC
-	mappingsTableEntry.w	Map_Tails_internal_05E6
-	mappingsTableEntry.w	Map_Tails_internal_0600
-	mappingsTableEntry.w	Map_Tails_internal_061A
-	mappingsTableEntry.w	Map_Tails_internal_0600
-	mappingsTableEntry.w	Map_Tails_internal_0634
-	mappingsTableEntry.w	Map_Tails_internal_064E
-	mappingsTableEntry.w	Map_Tails_internal_0668
-	mappingsTableEntry.w	Map_Tails_internal_0682
-	mappingsTableEntry.w	Map_Tails_internal_069C
-	mappingsTableEntry.w	Map_Tails_internal_06B6
-	mappingsTableEntry.w	Map_Tails_internal_06D0
-	mappingsTableEntry.w	Map_Tails_internal_06EA
-	mappingsTableEntry.w	Map_Tails_internal_0704
-	mappingsTableEntry.w	Map_Tails_internal_070E
-	mappingsTableEntry.w	Map_Tails_internal_0718
-	mappingsTableEntry.w	Map_Tails_internal_0722
-	mappingsTableEntry.w	Map_Tails_internal_072C
-	mappingsTableEntry.w	Map_Tails_internal_0736
-	mappingsTableEntry.w	Map_Tails_internal_0740
-	mappingsTableEntry.w	Map_Tails_internal_074A
-	mappingsTableEntry.w	Map_Tails_internal_0754
-	mappingsTableEntry.w	Map_Tails_internal_075E
-	mappingsTableEntry.w	Map_Tails_internal_0768
-	mappingsTableEntry.w	Map_Tails_internal_0772
-	mappingsTableEntry.w	Map_Tails_internal_077C
-	mappingsTableEntry.w	Map_Tails_internal_0786
-	mappingsTableEntry.w	Map_Tails_internal_0790
-	mappingsTableEntry.w	Map_Tails_internal_079A
-	mappingsTableEntry.w	Map_Tails_internal_07A4
-	mappingsTableEntry.w	Map_Tails_internal_07AE
-	mappingsTableEntry.w	Map_Tails_internal_07B8
-	mappingsTableEntry.w	Map_Tails_internal_07C2
-	mappingsTableEntry.w	Map_Tails_internal_07D4
-	mappingsTableEntry.w	Map_Tails_internal_07E6
-	mappingsTableEntry.w	Map_Tails_internal_07F0
-	mappingsTableEntry.w	Map_Tails_internal_07FA
-	mappingsTableEntry.w	Map_Tails_internal_0804
-	mappingsTableEntry.w	Map_Tails_internal_0816
-	mappingsTableEntry.w	Map_Tails_internal_0828
-	mappingsTableEntry.w	Map_Tails_internal_0832
-	mappingsTableEntry.w	Map_Tails_internal_083C
-	mappingsTableEntry.w	Map_Tails_internal_0846
-	mappingsTableEntry.w	Map_Tails_internal_0858
-	mappingsTableEntry.w	Map_Tails_internal_086A
-	mappingsTableEntry.w	Map_Tails_internal_087C
-	mappingsTableEntry.w	Map_Tails_internal_088E
-	mappingsTableEntry.w	Map_Tails_internal_08A0
-	mappingsTableEntry.w	Map_Tails_internal_08B2
-	mappingsTableEntry.w	Map_Tails_internal_08C4
-	mappingsTableEntry.w	Map_Tails_internal_08D6
-	mappingsTableEntry.w	Map_Tails_internal_08E0
-	mappingsTableEntry.w	Map_Tails_internal_08F2
-	mappingsTableEntry.w	Map_Tails_internal_0904
-	mappingsTableEntry.w	Map_Tails_internal_0916
-	mappingsTableEntry.w	Map_Tails_internal_0928
-	mappingsTableEntry.w	Map_Tails_internal_093A
-	mappingsTableEntry.w	Map_Tails_internal_094C
-	mappingsTableEntry.w	Map_Tails_internal_095E
-	mappingsTableEntry.w	Map_Tails_internal_0970
-	mappingsTableEntry.w	Map_Tails_internal_097A
-	mappingsTableEntry.w	Map_Tails_internal_0984
-	mappingsTableEntry.w	Map_Tails_internal_0996
-	mappingsTableEntry.w	Map_Tails_internal_09A0
-	mappingsTableEntry.w	Map_Tails_internal_09AA
-	mappingsTableEntry.w	Map_Tails_internal_09B4
-	mappingsTableEntry.w	Map_Tails_internal_09BE
-	mappingsTableEntry.w	Map_Tails_internal_09C8
-	mappingsTableEntry.w	Map_Tails_internal_09D2
-	mappingsTableEntry.w	Map_Tails_internal_09DC
-	mappingsTableEntry.w	Map_Tails_internal_09E6
-	mappingsTableEntry.w	Map_Tails_internal_09F8
-	mappingsTableEntry.w	Map_Tails_internal_0A0A
-	mappingsTableEntry.w	Map_Tails_internal_0A14
-	mappingsTableEntry.w	Map_Tails_internal_0A1E
-	mappingsTableEntry.w	Map_Tails_internal_0A28
+Map_Tails:	mappingsTable
+	mappingsTableEntry.w	Map_Tails_0116
+	mappingsTableEntry.w	Map_Tails_0118
+	mappingsTableEntry.w	Map_Tails_012A
+	mappingsTableEntry.w	Map_Tails_013C
+	mappingsTableEntry.w	Map_Tails_014E
+	mappingsTableEntry.w	Map_Tails_0160
+	mappingsTableEntry.w	Map_Tails_016A
+	mappingsTableEntry.w	Map_Tails_0174
+	mappingsTableEntry.w	Map_Tails_0186
+	mappingsTableEntry.w	Map_Tails_0198
+	mappingsTableEntry.w	Map_Tails_01A2
+	mappingsTableEntry.w	Map_Tails_01AC
+	mappingsTableEntry.w	Map_Tails_01B6
+	mappingsTableEntry.w	Map_Tails_01C0
+	mappingsTableEntry.w	Map_Tails_01CA
+	mappingsTableEntry.w	Map_Tails_01E4
+	mappingsTableEntry.w	Map_Tails_01FE
+	mappingsTableEntry.w	Map_Tails_0218
+	mappingsTableEntry.w	Map_Tails_0232
+	mappingsTableEntry.w	Map_Tails_024C
+	mappingsTableEntry.w	Map_Tails_0266
+	mappingsTableEntry.w	Map_Tails_0280
+	mappingsTableEntry.w	Map_Tails_029A
+	mappingsTableEntry.w	Map_Tails_02B4
+	mappingsTableEntry.w	Map_Tails_02CE
+	mappingsTableEntry.w	Map_Tails_02E8
+	mappingsTableEntry.w	Map_Tails_0302
+	mappingsTableEntry.w	Map_Tails_031C
+	mappingsTableEntry.w	Map_Tails_0336
+	mappingsTableEntry.w	Map_Tails_0350
+	mappingsTableEntry.w	Map_Tails_036A
+	mappingsTableEntry.w	Map_Tails_0384
+	mappingsTableEntry.w	Map_Tails_039E
+	mappingsTableEntry.w	Map_Tails_03B8
+	mappingsTableEntry.w	Map_Tails_03D2
+	mappingsTableEntry.w	Map_Tails_03EC
+	mappingsTableEntry.w	Map_Tails_0406
+	mappingsTableEntry.w	Map_Tails_0420
+	mappingsTableEntry.w	Map_Tails_043A
+	mappingsTableEntry.w	Map_Tails_044C
+	mappingsTableEntry.w	Map_Tails_0466
+	mappingsTableEntry.w	Map_Tails_0478
+	mappingsTableEntry.w	Map_Tails_0492
+	mappingsTableEntry.w	Map_Tails_04A4
+	mappingsTableEntry.w	Map_Tails_04BE
+	mappingsTableEntry.w	Map_Tails_04D0
+	mappingsTableEntry.w	Map_Tails_04EA
+	mappingsTableEntry.w	Map_Tails_04FC
+	mappingsTableEntry.w	Map_Tails_050E
+	mappingsTableEntry.w	Map_Tails_0520
+	mappingsTableEntry.w	Map_Tails_0532
+	mappingsTableEntry.w	Map_Tails_0544
+	mappingsTableEntry.w	Map_Tails_0556
+	mappingsTableEntry.w	Map_Tails_0570
+	mappingsTableEntry.w	Map_Tails_058A
+	mappingsTableEntry.w	Map_Tails_05A4
+	mappingsTableEntry.w	Map_Tails_05BE
+	mappingsTableEntry.w	Map_Tails_05D8
+	mappingsTableEntry.w	Map_Tails_05F2
+	mappingsTableEntry.w	Map_Tails_060C
+	mappingsTableEntry.w	Map_Tails_0626
+	mappingsTableEntry.w	Map_Tails_060C
+	mappingsTableEntry.w	Map_Tails_0640
+	mappingsTableEntry.w	Map_Tails_065A
+	mappingsTableEntry.w	Map_Tails_0674
+	mappingsTableEntry.w	Map_Tails_068E
+	mappingsTableEntry.w	Map_Tails_06A8
+	mappingsTableEntry.w	Map_Tails_06C2
+	mappingsTableEntry.w	Map_Tails_06DC
+	mappingsTableEntry.w	Map_Tails_06F6
+	mappingsTableEntry.w	Map_Tails_0710
+	mappingsTableEntry.w	Map_Tails_071A
+	mappingsTableEntry.w	Map_Tails_0724
+	mappingsTableEntry.w	Map_Tails_072E
+	mappingsTableEntry.w	Map_Tails_0738
+	mappingsTableEntry.w	Map_Tails_0742
+	mappingsTableEntry.w	Map_Tails_074C
+	mappingsTableEntry.w	Map_Tails_0756
+	mappingsTableEntry.w	Map_Tails_0760
+	mappingsTableEntry.w	Map_Tails_076A
+	mappingsTableEntry.w	Map_Tails_0774
+	mappingsTableEntry.w	Map_Tails_077E
+	mappingsTableEntry.w	Map_Tails_0788
+	mappingsTableEntry.w	Map_Tails_0792
+	mappingsTableEntry.w	Map_Tails_079C
+	mappingsTableEntry.w	Map_Tails_07A6
+	mappingsTableEntry.w	Map_Tails_07B0
+	mappingsTableEntry.w	Map_Tails_07BA
+	mappingsTableEntry.w	Map_Tails_07C4
+	mappingsTableEntry.w	Map_Tails_07CE
+	mappingsTableEntry.w	Map_Tails_07E0
+	mappingsTableEntry.w	Map_Tails_07F2
+	mappingsTableEntry.w	Map_Tails_07FC
+	mappingsTableEntry.w	Map_Tails_0806
+	mappingsTableEntry.w	Map_Tails_0810
+	mappingsTableEntry.w	Map_Tails_0822
+	mappingsTableEntry.w	Map_Tails_0834
+	mappingsTableEntry.w	Map_Tails_083E
+	mappingsTableEntry.w	Map_Tails_0848
+	mappingsTableEntry.w	Map_Tails_0852
+	mappingsTableEntry.w	Map_Tails_0864
+	mappingsTableEntry.w	Map_Tails_0876
+	mappingsTableEntry.w	Map_Tails_0888
+	mappingsTableEntry.w	Map_Tails_089A
+	mappingsTableEntry.w	Map_Tails_08AC
+	mappingsTableEntry.w	Map_Tails_08BE
+	mappingsTableEntry.w	Map_Tails_08D0
+	mappingsTableEntry.w	Map_Tails_08E2
+	mappingsTableEntry.w	Map_Tails_08EC
+	mappingsTableEntry.w	Map_Tails_08FE
+	mappingsTableEntry.w	Map_Tails_0910
+	mappingsTableEntry.w	Map_Tails_0922
+	mappingsTableEntry.w	Map_Tails_0934
+	mappingsTableEntry.w	Map_Tails_0946
+	mappingsTableEntry.w	Map_Tails_0958
+	mappingsTableEntry.w	Map_Tails_096A
+	mappingsTableEntry.w	Map_Tails_097C
+	mappingsTableEntry.w	Map_Tails_0986
+	mappingsTableEntry.w	Map_Tails_0990
+	mappingsTableEntry.w	Map_Tails_09A2
+	mappingsTableEntry.w	Map_Tails_09AC
+	mappingsTableEntry.w	Map_Tails_09B6
+	mappingsTableEntry.w	Map_Tails_09C0
+	mappingsTableEntry.w	Map_Tails_09CA
+	mappingsTableEntry.w	Map_Tails_09D4
+	mappingsTableEntry.w	Map_Tails_09DE
+	mappingsTableEntry.w	Map_Tails_09E8
+	mappingsTableEntry.w	Map_Tails_09F2
+	mappingsTableEntry.w	Map_Tails_0A04
+	mappingsTableEntry.w	Map_Tails_0A16
+	mappingsTableEntry.w	Map_Tails_0A20
+	mappingsTableEntry.w	Map_Tails_0A2A
+	mappingsTableEntry.w	Map_Tails_0A34
+	mappingsTableEntry.w	Map_Tails_0A3E
+	mappingsTableEntry.w	Map_Tails_0A50
+	mappingsTableEntry.w	Map_Tails_0A62
+	mappingsTableEntry.w	Map_Tails_0A6C
+	mappingsTableEntry.w	Map_Tails_0A76
+	mappingsTableEntry.w	Map_Tails_0A80
 
-Map_Tails_internal_010A:	spriteHeader
-Map_Tails_internal_010A_End
+Map_Tails_0116:	spriteHeader
+Map_Tails_0116_End
 
-Map_Tails_internal_010C:	spriteHeader
+Map_Tails_0118:	spriteHeader
 	spritePiece	-$C, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$C, 0, 3, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_010C_End
+Map_Tails_0118_End
 
-Map_Tails_internal_011E:	spriteHeader
+Map_Tails_012A:	spriteHeader
 	spritePiece	-$C, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$C, 0, 3, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_011E_End
+Map_Tails_012A_End
 
-Map_Tails_internal_0130:	spriteHeader
+Map_Tails_013C:	spriteHeader
 	spritePiece	-$C, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$C, 0, 3, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_0130_End
+Map_Tails_013C_End
 
-Map_Tails_internal_0142:	spriteHeader
+Map_Tails_014E:	spriteHeader
 	spritePiece	-$C, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$C, 0, 3, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_0142_End
+Map_Tails_014E_End
 
-Map_Tails_internal_0154:	spriteHeader
+Map_Tails_0160:	spriteHeader
 	spritePiece	-$C, -$10, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_0154_End
+Map_Tails_0160_End
 
-Map_Tails_internal_015E:	spriteHeader
+Map_Tails_016A:	spriteHeader
 	spritePiece	-$C, -$10, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_015E_End
+Map_Tails_016A_End
 
-Map_Tails_internal_0168:	spriteHeader
+Map_Tails_0174:	spriteHeader
 	spritePiece	-$C, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$C, 0, 3, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_0168_End
+Map_Tails_0174_End
 
-Map_Tails_internal_017A:	spriteHeader
+Map_Tails_0186:	spriteHeader
 	spritePiece	-$C, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$C, 0, 3, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_017A_End
+Map_Tails_0186_End
 
-Map_Tails_internal_018C:	spriteHeader
+Map_Tails_0198:	spriteHeader
 	spritePiece	-$14, -$10, 2, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_018C_End
+Map_Tails_0198_End
 
-Map_Tails_internal_0196:	spriteHeader
+Map_Tails_01A2:	spriteHeader
 	spritePiece	-$1C, -$10, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_0196_End
+Map_Tails_01A2_End
 
-Map_Tails_internal_01A0:	spriteHeader
+Map_Tails_01AC:	spriteHeader
 	spritePiece	-$1C, -$10, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_01A0_End
+Map_Tails_01AC_End
 
-Map_Tails_internal_01AA:	spriteHeader
+Map_Tails_01B6:	spriteHeader
 	spritePiece	-$1C, 0, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_01AA_End
+Map_Tails_01B6_End
 
-Map_Tails_internal_01B4:	spriteHeader
+Map_Tails_01C0:	spriteHeader
 	spritePiece	-$1C, -$10, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_01B4_End
+Map_Tails_01C0_End
 
-Map_Tails_internal_01BE:	spriteHeader
+Map_Tails_01CA:	spriteHeader
 	spritePiece	-$10, -$14, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -4, 4, 2, 6, 0, 0, 0, 0
 	spritePiece	-$1E, -4, 3, 2, $E, 0, 0, 0, 0
-Map_Tails_internal_01BE_End
+Map_Tails_01CA_End
 
-Map_Tails_internal_01D8:	spriteHeader
+Map_Tails_01E4:	spriteHeader
 	spritePiece	-$D, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, 0, 4, 2, 6, 0, 0, 0, 0
 	spritePiece	-$1C, 0, 3, 2, $E, 0, 0, 0, 0
-Map_Tails_internal_01D8_End
+Map_Tails_01E4_End
 
-Map_Tails_internal_01F2:	spriteHeader
+Map_Tails_01FE:	spriteHeader
 	spritePiece	-8, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$D, 0, 3, 2, 6, 0, 0, 0, 0
 	spritePiece	-$1C, -3, 3, 2, $C, 0, 0, 0, 0
-Map_Tails_internal_01F2_End
+Map_Tails_01FE_End
 
-Map_Tails_internal_020C:	spriteHeader
+Map_Tails_0218:	spriteHeader
 	spritePiece	-$E, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$E, 0, 3, 2, 6, 0, 0, 0, 0
 	spritePiece	-$1A, -3, 3, 2, $C, 0, 0, 0, 0
-Map_Tails_internal_020C_End
+Map_Tails_0218_End
 
-Map_Tails_internal_0226:	spriteHeader
+Map_Tails_0232:	spriteHeader
 	spritePiece	-$10, -$14, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -4, 4, 2, 6, 0, 0, 0, 0
 	spritePiece	-$1E, -4, 3, 2, $E, 0, 0, 0, 0
-Map_Tails_internal_0226_End
+Map_Tails_0232_End
 
-Map_Tails_internal_0240:	spriteHeader
+Map_Tails_024C:	spriteHeader
 	spritePiece	-$D, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, 0, 4, 2, 6, 0, 0, 0, 0
 	spritePiece	-$1C, 0, 3, 2, $E, 0, 0, 0, 0
-Map_Tails_internal_0240_End
+Map_Tails_024C_End
 
-Map_Tails_internal_025A:	spriteHeader
+Map_Tails_0266:	spriteHeader
 	spritePiece	-8, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$F, 0, 3, 2, 6, 0, 0, 0, 0
 	spritePiece	-$1C, -3, 3, 2, $C, 0, 0, 0, 0
-Map_Tails_internal_025A_End
+Map_Tails_0266_End
 
-Map_Tails_internal_0274:	spriteHeader
+Map_Tails_0280:	spriteHeader
 	spritePiece	-$E, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$E, 0, 3, 2, 6, 0, 0, 0, 0
 	spritePiece	-$1A, -3, 3, 2, $C, 0, 0, 0, 0
-Map_Tails_internal_0274_End
+Map_Tails_0280_End
 
-Map_Tails_internal_028E:	spriteHeader
+Map_Tails_029A:	spriteHeader
 	spritePiece	-$D, -$1D, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$14, -$D, 1, 4, 2, 0, 0, 0, 0
 	spritePiece	-$C, -$D, 3, 4, 6, 0, 0, 0, 0
-Map_Tails_internal_028E_End
+Map_Tails_029A_End
 
-Map_Tails_internal_02A8:	spriteHeader
+Map_Tails_02B4:	spriteHeader
 	spritePiece	-$A, -$19, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-$12, -9, 3, 4, 4, 0, 0, 0, 0
 	spritePiece	6, -2, 2, 2, $10, 0, 0, 0, 0
-Map_Tails_internal_02A8_End
+Map_Tails_02B4_End
 
-Map_Tails_internal_02C2:	spriteHeader
+Map_Tails_02CE:	spriteHeader
 	spritePiece	-8, -$1A, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-$11, -$A, 1, 4, 4, 0, 0, 0, 0
 	spritePiece	-9, -$A, 3, 4, 8, 0, 0, 0, 0
-Map_Tails_internal_02C2_End
+Map_Tails_02CE_End
 
-Map_Tails_internal_02DC:	spriteHeader
+Map_Tails_02E8:	spriteHeader
 	spritePiece	-9, -$1D, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$14, -$D, 4, 4, 2, 0, 0, 0, 0
 	spritePiece	$C, -5, 1, 2, $12, 0, 0, 0, 0
-Map_Tails_internal_02DC_End
+Map_Tails_02E8_End
 
-Map_Tails_internal_02F6:	spriteHeader
+Map_Tails_0302:	spriteHeader
 	spritePiece	-$D, -$1D, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$14, -$D, 1, 4, 2, 0, 0, 0, 0
 	spritePiece	-$C, -$D, 3, 4, 6, 0, 0, 0, 0
-Map_Tails_internal_02F6_End
+Map_Tails_0302_End
 
-Map_Tails_internal_0310:	spriteHeader
+Map_Tails_031C:	spriteHeader
 	spritePiece	-$A, -$19, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-$12, -9, 3, 4, 4, 0, 0, 0, 0
 	spritePiece	6, -1, 2, 2, $10, 0, 0, 0, 0
-Map_Tails_internal_0310_End
+Map_Tails_031C_End
 
-Map_Tails_internal_032A:	spriteHeader
+Map_Tails_0336:	spriteHeader
 	spritePiece	-8, -$1A, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-$11, -$A, 1, 4, 4, 0, 0, 0, 0
 	spritePiece	-9, -$A, 3, 4, 8, 0, 0, 0, 0
-Map_Tails_internal_032A_End
+Map_Tails_0336_End
 
-Map_Tails_internal_0344:	spriteHeader
+Map_Tails_0350:	spriteHeader
 	spritePiece	-9, -$1D, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$14, -$D, 4, 4, 2, 0, 0, 0, 0
 	spritePiece	$C, 3, 1, 2, $12, 0, 0, 0, 0
-Map_Tails_internal_0344_End
+Map_Tails_0350_End
 
-Map_Tails_internal_035E:	spriteHeader
+Map_Tails_036A:	spriteHeader
 	spritePiece	-$14, -$10, 2, 4, 0, 0, 0, 0, 0
 	spritePiece	-4, -$10, 2, 4, 8, 0, 0, 0, 0
 	spritePiece	-4, 6, 2, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_035E_End
+Map_Tails_036A_End
 
-Map_Tails_internal_0378:	spriteHeader
+Map_Tails_0384:	spriteHeader
 	spritePiece	-$10, -$10, 2, 4, 0, 0, 0, 0, 0
 	spritePiece	0, -$10, 2, 4, 8, 0, 0, 0, 0
 	spritePiece	0, 4, 2, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_0378_End
+Map_Tails_0384_End
 
-Map_Tails_internal_0392:	spriteHeader
+Map_Tails_039E:	spriteHeader
 	spritePiece	-$10, -$10, 2, 4, 0, 0, 0, 0, 0
 	spritePiece	0, -$10, 2, 4, 8, 0, 0, 0, 0
 	spritePiece	-3, 4, 2, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_0392_End
+Map_Tails_039E_End
 
-Map_Tails_internal_03AC:	spriteHeader
+Map_Tails_03B8:	spriteHeader
 	spritePiece	-$10, -$10, 2, 4, 0, 0, 0, 0, 0
 	spritePiece	0, -$10, 2, 4, 8, 0, 0, 0, 0
 	spritePiece	-3, 4, 2, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_03AC_End
+Map_Tails_03B8_End
 
-Map_Tails_internal_03C6:	spriteHeader
+Map_Tails_03D2:	spriteHeader
 	spritePiece	-$14, -$10, 2, 4, 0, 0, 0, 0, 0
 	spritePiece	-4, -$10, 2, 4, 8, 0, 0, 0, 0
 	spritePiece	-4, 6, 2, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_03C6_End
+Map_Tails_03D2_End
 
-Map_Tails_internal_03E0:	spriteHeader
+Map_Tails_03EC:	spriteHeader
 	spritePiece	-$10, -$10, 2, 4, 0, 0, 0, 0, 0
 	spritePiece	0, -$10, 2, 4, 8, 0, 0, 0, 0
 	spritePiece	0, 4, 2, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_03E0_End
+Map_Tails_03EC_End
 
-Map_Tails_internal_03FA:	spriteHeader
+Map_Tails_0406:	spriteHeader
 	spritePiece	-$10, -$10, 2, 4, 0, 0, 0, 0, 0
 	spritePiece	0, -$10, 2, 4, 8, 0, 0, 0, 0
 	spritePiece	-3, 4, 2, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_03FA_End
+Map_Tails_0406_End
 
-Map_Tails_internal_0414:	spriteHeader
+Map_Tails_0420:	spriteHeader
 	spritePiece	-$10, -$10, 2, 4, 0, 0, 0, 0, 0
 	spritePiece	0, -$10, 2, 4, 8, 0, 0, 0, 0
 	spritePiece	-3, 4, 2, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_0414_End
+Map_Tails_0420_End
 
-Map_Tails_internal_042E:	spriteHeader
+Map_Tails_043A:	spriteHeader
 	spritePiece	-$15, 4, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$D, -$C, 4, 4, 2, 0, 0, 0, 0
-Map_Tails_internal_042E_End
+Map_Tails_043A_End
 
-Map_Tails_internal_0440:	spriteHeader
+Map_Tails_044C:	spriteHeader
 	spritePiece	-8, -$1E, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -6, 1, 2, 4, 0, 0, 0, 0
 	spritePiece	-8, -$E, 4, 4, 6, 0, 0, 0, 0
-Map_Tails_internal_0440_End
+Map_Tails_044C_End
 
-Map_Tails_internal_045A:	spriteHeader
+Map_Tails_0466:	spriteHeader
 	spritePiece	-$14, -7, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$C, -$F, 4, 4, 2, 0, 0, 0, 0
-Map_Tails_internal_045A_End
+Map_Tails_0466_End
 
-Map_Tails_internal_046C:	spriteHeader
+Map_Tails_0478:	spriteHeader
 	spritePiece	-$11, -4, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-1, -$1B, 1, 2, 2, 0, 0, 0, 0
 	spritePiece	-9, -$B, 4, 4, 4, 0, 0, 0, 0
-Map_Tails_internal_046C_End
+Map_Tails_0478_End
 
-Map_Tails_internal_0486:	spriteHeader
+Map_Tails_0492:	spriteHeader
 	spritePiece	-$15, 4, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$D, -$C, 4, 4, 2, 0, 0, 0, 0
-Map_Tails_internal_0486_End
+Map_Tails_0492_End
 
-Map_Tails_internal_0498:	spriteHeader
+Map_Tails_04A4:	spriteHeader
 	spritePiece	0, -$1E, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -6, 1, 2, 2, 0, 0, 0, 0
 	spritePiece	-8, -$E, 4, 4, 4, 0, 0, 0, 0
-Map_Tails_internal_0498_End
+Map_Tails_04A4_End
 
-Map_Tails_internal_04B2:	spriteHeader
+Map_Tails_04BE:	spriteHeader
 	spritePiece	-$14, -7, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$C, -$F, 4, 4, 2, 0, 0, 0, 0
-Map_Tails_internal_04B2_End
+Map_Tails_04BE_End
 
-Map_Tails_internal_04C4:	spriteHeader
+Map_Tails_04D0:	spriteHeader
 	spritePiece	-1, -$1C, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$11, -4, 1, 2, 2, 0, 0, 0, 0
 	spritePiece	-9, -$C, 4, 4, 4, 0, 0, 0, 0
-Map_Tails_internal_04C4_End
+Map_Tails_04D0_End
 
-Map_Tails_internal_04DE:	spriteHeader
+Map_Tails_04EA:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
 	spritePiece	-$16, -$10, 2, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_04DE_End
+Map_Tails_04EA_End
 
-Map_Tails_internal_04F0:	spriteHeader
+Map_Tails_04FC:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
 	spritePiece	-$16, -8, 2, 2, $10, 0, 0, 0, 0
-Map_Tails_internal_04F0_End
+Map_Tails_04FC_End
 
-Map_Tails_internal_0502:	spriteHeader
+Map_Tails_050E:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
 	spritePiece	-$16, -8, 2, 2, $10, 0, 0, 0, 0
-Map_Tails_internal_0502_End
+Map_Tails_050E_End
 
-Map_Tails_internal_0514:	spriteHeader
+Map_Tails_0520:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
 	spritePiece	-$16, -8, 2, 2, $10, 0, 1, 0, 0
-Map_Tails_internal_0514_End
+Map_Tails_0520_End
 
-Map_Tails_internal_0526:	spriteHeader
+Map_Tails_0532:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
 	spritePiece	-$16, -$10, 2, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_0526_End
+Map_Tails_0532_End
 
-Map_Tails_internal_0538:	spriteHeader
+Map_Tails_0544:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
-	spritePiece	-$16, -$10, 2, 4, $10, 1, 1, 0, 0
-Map_Tails_internal_0538_End
+	spritePiece	-$18, -$10, 2, 4, $10, 1, 1, 0, 0
+Map_Tails_0544_End
 
-Map_Tails_internal_054A:	spriteHeader
+Map_Tails_0556:	spriteHeader
 	spritePiece	-6, -$1C, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -$C, 3, 4, 2, 0, 0, 0, 0
 	spritePiece	-$18, -2, 3, 4, $E, 0, 0, 0, 0
-Map_Tails_internal_054A_End
+Map_Tails_0556_End
 
-Map_Tails_internal_0564:	spriteHeader
+Map_Tails_0570:	spriteHeader
 	spritePiece	-8, -$1C, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -$C, 3, 4, 4, 0, 0, 0, 0
 	spritePiece	-$11, 4, 2, 2, $10, 0, 0, 0, 0
-Map_Tails_internal_0564_End
+Map_Tails_0570_End
 
-Map_Tails_internal_057E:	spriteHeader
+Map_Tails_058A:	spriteHeader
 	spritePiece	-6, -$1C, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -$C, 3, 4, 2, 0, 0, 0, 0
 	spritePiece	-$11, 4, 2, 2, $E, 0, 0, 0, 0
-Map_Tails_internal_057E_End
+Map_Tails_058A_End
 
-Map_Tails_internal_0598:	spriteHeader
+Map_Tails_05A4:	spriteHeader
 	spritePiece	-8, -$1C, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -$C, 3, 4, 4, 0, 0, 0, 0
 	spritePiece	-$11, 4, 2, 2, $10, 0, 0, 0, 0
-Map_Tails_internal_0598_End
+Map_Tails_05A4_End
 
-Map_Tails_internal_05B2:	spriteHeader
+Map_Tails_05BE:	spriteHeader
 	spritePiece	-6, -$1C, 1, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -$C, 3, 4, 2, 0, 0, 0, 0
 	spritePiece	-$16, -4, 3, 4, $E, 0, 0, 0, 0
-Map_Tails_internal_05B2_End
+Map_Tails_05BE_End
 
-Map_Tails_internal_05CC:	spriteHeader
+Map_Tails_05D8:	spriteHeader
 	spritePiece	-8, -$1C, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -$C, 3, 4, 4, 0, 0, 0, 0
-	spritePiece	-$E, -$17, 3, 4, $10, 1, 1, 0, 0
-Map_Tails_internal_05CC_End
+	spritePiece	-$16, -9, 3, 4, $10, 1, 1, 0, 0
+Map_Tails_05D8_End
 
-Map_Tails_internal_05E6:	spriteHeader
+Map_Tails_05F2:	spriteHeader
 	spritePiece	-$10, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, 0, 4, 2, 6, 0, 0, 0, 0
 	spritePiece	-$10, 6, 4, 2, $E, 0, 0, 0, 0
-Map_Tails_internal_05E6_End
+Map_Tails_05F2_End
 
-Map_Tails_internal_0600:	spriteHeader
+Map_Tails_060C:	spriteHeader
 	spritePiece	-$10, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, 0, 4, 2, 6, 0, 0, 0, 0
 	spritePiece	-8, 6, 2, 2, $E, 0, 0, 0, 0
-Map_Tails_internal_0600_End
+Map_Tails_060C_End
 
-Map_Tails_internal_061A:	spriteHeader
+Map_Tails_0626:	spriteHeader
 	spritePiece	-$10, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, 0, 4, 2, 6, 0, 0, 0, 0
 	spritePiece	-8, 6, 2, 2, $E, 0, 0, 0, 0
-Map_Tails_internal_061A_End
+Map_Tails_0626_End
 
-Map_Tails_internal_0634:	spriteHeader
+Map_Tails_0640:	spriteHeader
 	spritePiece	-$10, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, 0, 4, 2, 6, 0, 0, 0, 0
 	spritePiece	-$10, 6, 4, 2, $E, 0, 0, 0, 0
-Map_Tails_internal_0634_End
+Map_Tails_0640_End
 
-Map_Tails_internal_064E:	spriteHeader
+Map_Tails_065A:	spriteHeader
 	spritePiece	-$10, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, 0, 4, 2, 6, 0, 0, 0, 0
-	spritePiece	-$10, 6, 4, 2, $E, 0, 0, 0, 0
-Map_Tails_internal_064E_End
+	spritePiece	-$10, 8, 4, 2, $E, 1, 1, 0, 0
+Map_Tails_065A_End
 
-Map_Tails_internal_0668:	spriteHeader
+Map_Tails_0674:	spriteHeader
 	spritePiece	-$14, -8, 3, 4, 0, 0, 0, 0, 0
 	spritePiece	4, -8, 2, 2, $C, 0, 0, 0, 0
 	spritePiece	0, -2, 3, 4, $10, 1, 0, 0, 0
-Map_Tails_internal_0668_End
+Map_Tails_0674_End
 
-Map_Tails_internal_0682:	spriteHeader
+Map_Tails_068E:	spriteHeader
 	spritePiece	-$14, -8, 3, 4, 0, 0, 0, 0, 0
 	spritePiece	4, -8, 2, 2, $C, 0, 0, 0, 0
 	spritePiece	4, 1, 2, 2, $10, 1, 0, 0, 0
-Map_Tails_internal_0682_End
+Map_Tails_068E_End
 
-Map_Tails_internal_069C:	spriteHeader
+Map_Tails_06A8:	spriteHeader
 	spritePiece	-$14, -8, 3, 4, 0, 0, 0, 0, 0
 	spritePiece	4, -8, 2, 2, $C, 0, 0, 0, 0
 	spritePiece	4, 1, 2, 2, $10, 1, 0, 0, 0
-Map_Tails_internal_069C_End
+Map_Tails_06A8_End
 
-Map_Tails_internal_06B6:	spriteHeader
+Map_Tails_06C2:	spriteHeader
 	spritePiece	-$14, -8, 3, 4, 0, 0, 0, 0, 0
 	spritePiece	4, -8, 2, 2, $C, 0, 0, 0, 0
 	spritePiece	4, 1, 2, 2, $10, 1, 0, 0, 0
-Map_Tails_internal_06B6_End
+Map_Tails_06C2_End
 
-Map_Tails_internal_06D0:	spriteHeader
+Map_Tails_06DC:	spriteHeader
 	spritePiece	-$14, -8, 3, 4, 0, 0, 0, 0, 0
 	spritePiece	4, -8, 2, 2, $C, 0, 0, 0, 0
 	spritePiece	-2, -4, 3, 4, $10, 1, 0, 0, 0
-Map_Tails_internal_06D0_End
+Map_Tails_06DC_End
 
-Map_Tails_internal_06EA:	spriteHeader
+Map_Tails_06F6:	spriteHeader
 	spritePiece	-$14, -8, 3, 4, 0, 0, 0, 0, 0
 	spritePiece	4, -8, 2, 2, $C, 0, 0, 0, 0
-	spritePiece	6, -4, 3, 4, $10, 0, 1, 0, 0
-Map_Tails_internal_06EA_End
+	spritePiece	-1, -9, 3, 4, $10, 0, 1, 0, 0
+Map_Tails_06F6_End
 
-Map_Tails_internal_0704:	spriteHeader
+Map_Tails_0710:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_0704_End
+Map_Tails_0710_End
 
-Map_Tails_internal_070E:	spriteHeader
+Map_Tails_071A:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_070E_End
+Map_Tails_071A_End
 
-Map_Tails_internal_0718:	spriteHeader
+Map_Tails_0724:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_0718_End
+Map_Tails_0724_End
 
-Map_Tails_internal_0722:	spriteHeader
+Map_Tails_072E:	spriteHeader
 	spritePiece	-$24, -8, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_0722_End
+Map_Tails_072E_End
 
-Map_Tails_internal_072C:	spriteHeader
+Map_Tails_0738:	spriteHeader
 	spritePiece	-$24, -8, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_072C_End
+Map_Tails_0738_End
 
-Map_Tails_internal_0736:	spriteHeader
+Map_Tails_0742:	spriteHeader
 	spritePiece	-$24, -8, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_0736_End
+Map_Tails_0742_End
 
-Map_Tails_internal_0740:	spriteHeader
+Map_Tails_074C:	spriteHeader
 	spritePiece	-$24, -8, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_0740_End
+Map_Tails_074C_End
 
-Map_Tails_internal_074A:	spriteHeader
+Map_Tails_0756:	spriteHeader
 	spritePiece	-$1F, 7, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_074A_End
+Map_Tails_0756_End
 
-Map_Tails_internal_0754:	spriteHeader
+Map_Tails_0760:	spriteHeader
 	spritePiece	-$1F, 7, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_0754_End
+Map_Tails_0760_End
 
-Map_Tails_internal_075E:	spriteHeader
+Map_Tails_076A:	spriteHeader
 	spritePiece	-$1F, 7, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_075E_End
+Map_Tails_076A_End
 
-Map_Tails_internal_0768:	spriteHeader
+Map_Tails_0774:	spriteHeader
 	spritePiece	-$1F, 7, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_0768_End
+Map_Tails_0774_End
 
-Map_Tails_internal_0772:	spriteHeader
+Map_Tails_077E:	spriteHeader
 	spritePiece	-8, $C, 2, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_0772_End
+Map_Tails_077E_End
 
-Map_Tails_internal_077C:	spriteHeader
+Map_Tails_0788:	spriteHeader
 	spritePiece	-8, $C, 2, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_077C_End
+Map_Tails_0788_End
 
-Map_Tails_internal_0786:	spriteHeader
+Map_Tails_0792:	spriteHeader
 	spritePiece	-8, $C, 2, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_0786_End
+Map_Tails_0792_End
 
-Map_Tails_internal_0790:	spriteHeader
+Map_Tails_079C:	spriteHeader
 	spritePiece	-8, $C, 2, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_0790_End
+Map_Tails_079C_End
 
-Map_Tails_internal_079A:	spriteHeader
+Map_Tails_07A6:	spriteHeader
 	spritePiece	7, 7, 2, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_079A_End
+Map_Tails_07A6_End
 
-Map_Tails_internal_07A4:	spriteHeader
+Map_Tails_07B0:	spriteHeader
 	spritePiece	7, 7, 2, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_07A4_End
+Map_Tails_07B0_End
 
-Map_Tails_internal_07AE:	spriteHeader
+Map_Tails_07BA:	spriteHeader
 	spritePiece	7, 7, 2, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_07AE_End
+Map_Tails_07BA_End
 
-Map_Tails_internal_07B8:	spriteHeader
+Map_Tails_07C4:	spriteHeader
 	spritePiece	7, 7, 2, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_07B8_End
+Map_Tails_07C4_End
 
-Map_Tails_internal_07C2:	spriteHeader
+Map_Tails_07CE:	spriteHeader
 	spritePiece	-8, -$18, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -8, 3, 4, 4, 0, 0, 0, 0
-Map_Tails_internal_07C2_End
+Map_Tails_07CE_End
 
-Map_Tails_internal_07D4:	spriteHeader
+Map_Tails_07E0:	spriteHeader
 	spritePiece	-8, -$18, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, -8, 3, 4, 4, 0, 0, 0, 0
-Map_Tails_internal_07D4_End
+Map_Tails_07E0_End
 
-Map_Tails_internal_07E6:	spriteHeader
+Map_Tails_07F2:	spriteHeader
 	spritePiece	-7, -$10, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_07E6_End
+Map_Tails_07F2_End
 
-Map_Tails_internal_07F0:	spriteHeader
+Map_Tails_07FC:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_07F0_End
+Map_Tails_07FC_End
 
-Map_Tails_internal_07FA:	spriteHeader
+Map_Tails_0806:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_07FA_End
+Map_Tails_0806_End
 
-Map_Tails_internal_0804:	spriteHeader
+Map_Tails_0810:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
 	spritePiece	-$16, -$1C, 4, 2, $10, 0, 0, 0, 0
-Map_Tails_internal_0804_End
+Map_Tails_0810_End
 
-Map_Tails_internal_0816:	spriteHeader
+Map_Tails_0822:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
 	spritePiece	-$16, -$1C, 4, 2, $10, 1, 0, 0, 0
-Map_Tails_internal_0816_End
+Map_Tails_0822_End
 
-Map_Tails_internal_0828:	spriteHeader
+Map_Tails_0834:	spriteHeader
 	spritePiece	-$10, -$C, 4, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_0828_End
+Map_Tails_0834_End
 
-Map_Tails_internal_0832:	spriteHeader
+Map_Tails_083E:	spriteHeader
 	spritePiece	-$10, -$C, 4, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_0832_End
+Map_Tails_083E_End
 
-Map_Tails_internal_083C:	spriteHeader
+Map_Tails_0848:	spriteHeader
 	spritePiece	-$10, -$C, 4, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_083C_End
+Map_Tails_0848_End
 
-Map_Tails_internal_0846:	spriteHeader
+Map_Tails_0852:	spriteHeader
 	spritePiece	-8, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, 0, 4, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_0846_End
+Map_Tails_0852_End
 
-Map_Tails_internal_0858:	spriteHeader
+Map_Tails_0864:	spriteHeader
 	spritePiece	-8, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-8, 0, 3, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_0858_End
+Map_Tails_0864_End
 
-Map_Tails_internal_086A:	spriteHeader
+Map_Tails_0876:	spriteHeader
 	spritePiece	-8, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-8, 0, 3, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_086A_End
+Map_Tails_0876_End
 
-Map_Tails_internal_087C:	spriteHeader
+Map_Tails_0888:	spriteHeader
 	spritePiece	-8, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-8, 0, 3, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_087C_End
+Map_Tails_0888_End
 
-Map_Tails_internal_088E:	spriteHeader
+Map_Tails_089A:	spriteHeader
 	spritePiece	-$10, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, 0, 4, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_088E_End
+Map_Tails_089A_End
 
-Map_Tails_internal_08A0:	spriteHeader
+Map_Tails_08AC:	spriteHeader
 	spritePiece	-$10, -$10, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$10, 0, 4, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_08A0_End
+Map_Tails_08AC_End
 
-Map_Tails_internal_08B2:	spriteHeader
-	spritePiece	-$10, -8, 1, 2, 0, 0, 0, 0, 0
-	spritePiece	-8, -$10, 3, 4, 2, 0, 0, 0, 0
-Map_Tails_internal_08B2_End
+Map_Tails_08BE:	spriteHeader
+	spritePiece	-$18, -8, 1, 2, 0, 0, 0, 0, 0
+	spritePiece	-$10, -$10, 3, 4, 2, 0, 0, 0, 0
+Map_Tails_08BE_End
 
-Map_Tails_internal_08C4:	spriteHeader
-	spritePiece	-8, -$10, 3, 2, 0, 0, 0, 0, 0
-	spritePiece	-$10, 0, 4, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_08C4_End
+Map_Tails_08D0:	spriteHeader
+	spritePiece	-$10, -$10, 3, 2, 0, 0, 0, 0, 0
+	spritePiece	-$18, 0, 4, 2, 6, 0, 0, 0, 0
+Map_Tails_08D0_End
 
-Map_Tails_internal_08D6:	spriteHeader
+Map_Tails_08E2:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_08D6_End
+Map_Tails_08E2_End
 
-Map_Tails_internal_08E0:	spriteHeader
+Map_Tails_08EC:	spriteHeader
 	spritePiece	-$14, -$10, 4, 4, 0, 0, 0, 0, 0
 	spritePiece	$C, -$10, 1, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_08E0_End
+Map_Tails_08EC_End
 
-Map_Tails_internal_08F2:	spriteHeader
+Map_Tails_08FE:	spriteHeader
 	spritePiece	-$14, -$10, 4, 4, 0, 0, 0, 0, 0
 	spritePiece	$C, -$10, 1, 4, $10, 0, 0, 0, 0
-Map_Tails_internal_08F2_End
+Map_Tails_08FE_End
 
-Map_Tails_internal_0904:	spriteHeader
+Map_Tails_0910:	spriteHeader
 	spritePiece	-$14, -8, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-4, -$10, 3, 4, 4, 0, 0, 0, 0
-Map_Tails_internal_0904_End
+Map_Tails_0910_End
 
-Map_Tails_internal_0916:	spriteHeader
+Map_Tails_0922:	spriteHeader
 	spritePiece	-$10, -$10, 2, 4, 0, 0, 0, 0, 0
 	spritePiece	0, -$10, 2, 4, 0, 1, 0, 0, 0
-Map_Tails_internal_0916_End
+Map_Tails_0922_End
 
-Map_Tails_internal_0928:	spriteHeader
+Map_Tails_0934:	spriteHeader
 	spritePiece	4, -8, 2, 2, 0, 1, 0, 0, 0
 	spritePiece	-$14, -$10, 3, 4, 4, 1, 0, 0, 0
-Map_Tails_internal_0928_End
+Map_Tails_0934_End
 
-Map_Tails_internal_093A:	spriteHeader
+Map_Tails_0946:	spriteHeader
 	spritePiece	-$10, -$10, 2, 4, 0, 0, 0, 0, 0
 	spritePiece	0, -8, 2, 2, 8, 0, 0, 0, 0
-Map_Tails_internal_093A_End
+Map_Tails_0946_End
 
-Map_Tails_internal_094C:	spriteHeader
+Map_Tails_0958:	spriteHeader
 	spritePiece	0, -$10, 2, 4, 0, 1, 0, 0, 0
 	spritePiece	-$10, -8, 2, 2, 8, 1, 0, 0, 0
-Map_Tails_internal_094C_End
+Map_Tails_0958_End
 
-Map_Tails_internal_095E:	spriteHeader
+Map_Tails_096A:	spriteHeader
 	spritePiece	-$14, -8, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-4, -$10, 3, 4, 4, 0, 0, 0, 0
-Map_Tails_internal_095E_End
+Map_Tails_096A_End
 
-Map_Tails_internal_0970:	spriteHeader
+Map_Tails_097C:	spriteHeader
 	spritePiece	-$10, -$10, 4, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_0970_End
+Map_Tails_097C_End
 
-Map_Tails_internal_097A:	spriteHeader
+Map_Tails_0986:	spriteHeader
 	spritePiece	-$F, -$10, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_097A_End
+Map_Tails_0986_End
 
-Map_Tails_internal_0984:	spriteHeader
+Map_Tails_0990:	spriteHeader
 	spritePiece	-8, -$1C, 2, 2, 0, 0, 0, 0, 0
 	spritePiece	-$F, -$C, 3, 4, 4, 0, 0, 0, 0
-Map_Tails_internal_0984_End
+Map_Tails_0990_End
 
-Map_Tails_internal_0996:	spriteHeader
+Map_Tails_09A2:	spriteHeader
 	spritePiece	-$E, -$E, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_0996_End
+Map_Tails_09A2_End
 
-Map_Tails_internal_09A0:	spriteHeader
+Map_Tails_09AC:	spriteHeader
 	spritePiece	-$10, -$C, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_09A0_End
+Map_Tails_09AC_End
 
-Map_Tails_internal_09AA:	spriteHeader
+Map_Tails_09B6:	spriteHeader
 	spritePiece	-$E, -$D, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_09AA_End
+Map_Tails_09B6_End
 
-Map_Tails_internal_09B4:	spriteHeader
+Map_Tails_09C0:	spriteHeader
 	spritePiece	-$E, -$E, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_09B4_End
+Map_Tails_09C0_End
 
-Map_Tails_internal_09BE:	spriteHeader
+Map_Tails_09CA:	spriteHeader
 	spritePiece	-$E, -$E, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_09BE_End
+Map_Tails_09CA_End
 
-Map_Tails_internal_09C8:	spriteHeader
+Map_Tails_09D4:	spriteHeader
 	spritePiece	-$F, -$10, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_09C8_End
+Map_Tails_09D4_End
 
-Map_Tails_internal_09D2:	spriteHeader
+Map_Tails_09DE:	spriteHeader
 	spritePiece	-$10, -$13, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_09D2_End
+Map_Tails_09DE_End
 
-Map_Tails_internal_09DC:	spriteHeader
+Map_Tails_09E8:	spriteHeader
 	spritePiece	-$F, -$14, 3, 4, 0, 0, 0, 0, 0
-Map_Tails_internal_09DC_End
+Map_Tails_09E8_End
 
-Map_Tails_internal_09E6:	spriteHeader
+Map_Tails_09F2:	spriteHeader
 	spritePiece	-$D, -$C, 3, 2, 0, 0, 0, 0, 0
 	spritePiece	-$D, 4, 2, 2, 6, 0, 0, 0, 0
-Map_Tails_internal_09E6_End
+Map_Tails_09F2_End
 
-Map_Tails_internal_09F8:	spriteHeader
+Map_Tails_0A04:	spriteHeader
 	spritePiece	-$10, -$E, 2, 4, 0, 0, 0, 0, 0
 	spritePiece	0, -$14, 1, 4, 8, 0, 0, 0, 0
-Map_Tails_internal_09F8_End
+Map_Tails_0A04_End
 
-Map_Tails_internal_0A0A:	spriteHeader
+Map_Tails_0A16:	spriteHeader
 	spritePiece	-$20, -8, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_0A0A_End
+Map_Tails_0A16_End
 
-Map_Tails_internal_0A14:	spriteHeader
+Map_Tails_0A20:	spriteHeader
 	spritePiece	-$20, -8, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_0A14_End
+Map_Tails_0A20_End
 
-Map_Tails_internal_0A1E:	spriteHeader
+Map_Tails_0A2A:	spriteHeader
 	spritePiece	-$20, -8, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_0A1E_End
+Map_Tails_0A2A_End
 
-Map_Tails_internal_0A28:	spriteHeader
+Map_Tails_0A34:	spriteHeader
 	spritePiece	-$20, -8, 3, 2, 0, 0, 0, 0, 0
-Map_Tails_internal_0A28_End
+Map_Tails_0A34_End
+
+Map_Tails_0A3E:	spriteHeader
+	spritePiece	-$C, -$18, 3, 2, 0, 0, 0, 0, 0
+	spritePiece	-$C, -8, 4, 2, 6, 0, 0, 0, 0
+Map_Tails_0A3E_End
+
+Map_Tails_0A50:	spriteHeader
+	spritePiece	-$C, -$18, 3, 2, 0, 0, 0, 0, 0
+	spritePiece	-$C, -8, 4, 2, 6, 0, 0, 0, 0
+Map_Tails_0A50_End
+
+Map_Tails_0A62:	spriteHeader
+	spritePiece	-$1D, -3, 3, 2, 0, 0, 0, 0, 0
+Map_Tails_0A62_End
+
+Map_Tails_0A6C:	spriteHeader
+	spritePiece	-$1D, -3, 3, 2, 0, 0, 0, 0, 0
+Map_Tails_0A6C_End
+
+Map_Tails_0A76:	spriteHeader
+	spritePiece	-$1D, -3, 3, 2, 0, 0, 0, 0, 0
+Map_Tails_0A76_End
+
+Map_Tails_0A80:	spriteHeader
+	spritePiece	-$1D, -3, 3, 2, 0, 0, 0, 0, 0
+Map_Tails_0A80_End
 
 	even
