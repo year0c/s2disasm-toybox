@@ -1024,7 +1024,11 @@ LevelOnly_Object_RAM_End:
 Primary_Collision:		ds.l	1
 Secondary_Collision:		ds.l	1
 
-				ds.b	$5F8	; unused
+Snd_driver_RAM:			ds.b $400	; $FFFFF100-$FFFFF5FF ; unused, leftover from the Sonic 1 sound driver (and used by it when you port it to Sonic 2)
+Snd_driver_RAM_end		= *
+SegaCD_Mode:		= Snd_driver_RAM+$3F0
+
+				ds.b	$1F8	; unused
 
 SS_Shared_RAM_End:
 
@@ -1222,14 +1226,7 @@ Underwater_palette_line4:	ds.b palette_line_size
 Sprite_Table_Alternate:		ds.b	$280
 Sprite_Table_P2_Alternate:	ds.b	$280
     else
-
-Snd_driver_RAM:			ds.b $400	; $FFFFF100-$FFFFF5FF ; unused, leftover from the Sonic 1 sound driver (and used by it when you port it to Sonic 2)
-Snd_driver_RAM_end		= *
-SegaCD_Mode:		= Snd_driver_RAM+$3F0
-
-				ds.b $100 ; unused
-
-;				ds.b	$500	; $FFFFF100-$FFFFF5FF ; unused, leftover from the Sonic 1 sound driver (and used by it when you port it to Sonic 2)
+				ds.b	$500	; $FFFFF100-$FFFFF5FF ; unused, leftover from the Sonic 1 sound driver (and used by it when you port it to Sonic 2)
     endif
 
 Game_Mode:			ds.b	1	; see GameModesArray (master level trigger, Mstr_Lvl_Trigger)
