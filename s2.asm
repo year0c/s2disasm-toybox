@@ -59500,7 +59500,7 @@ SlotMachine_Subroutine2:
 ; ---------------------------------------------------------------------------
 +
 	bsr.w	SlotMachine_GetPixelRow	; Get pointer to pixel row
-	lea	(Block_Table+$1000).w,a1	; Destination for pixel rows
+	lea	(Level_Layout_End).w,a1	; Destination for pixel rows
 
 	move.w	#4*8-1,d1			; Slot picture is 4 tiles
 -	move.l	$80(a2),$80(a1)			; Copy pixel row for second column
@@ -59515,7 +59515,7 @@ SlotMachine_Subroutine2:
 +
 	dbf	d1,-				; Loop for aoo pixel rows
 
-	move.l	#(Block_Table+$1000)&$FFFFFF,d1	; Source
+	move.l	#(Level_Layout_End)&$FFFFFF,d1	; Source
 	tst.w	(Two_player_mode).w
 	beq.s	+
 	addi.w	#tiles_to_bytes(ArtTile_ArtUnc_CNZSlotPics_1_2p-ArtTile_ArtUnc_CNZSlotPics_1),d2
