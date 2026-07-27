@@ -19264,7 +19264,7 @@ DrawBlockColumn:
 -	move.w	(a0),d3		; get ID of the 16x16 block
 	andi.w	#$3FF,d3
 	lsl.w	#3,d3		; multiply by 8, the size in bytes of a 16x16
-	lea	(Block_Table).w,a1
+	movea.l	(Block_Table).w,a1
 	adda.w	d3,a1		; a1 = address of the current 16x16 in the block table
 	move.l	d1,d0
 	bsr.w	ProcessAndWriteBlock_Vertical
@@ -19285,7 +19285,7 @@ DrawBlockColumn:
 -	move.w	(a0),d3
 	andi.w	#$3FF,d3
 	lsl.w	#3,d3
-	lea	(Block_Table).w,a1
+	movea.l	(Block_Table).w,a1
 	adda.w	d3,a1
 	move.l	d1,d0
 	bsr.w	ProcessAndWriteBlock_DoubleResolution_Vertical
@@ -19341,7 +19341,7 @@ DrawBlockRow:
 -	move.w	(a0),d3		; get ID of the 16x16 block
 	andi.w	#$3FF,d3
 	lsl.w	#3,d3		; multiply by 8, the size in bytes of a 16x16
-	lea	(Block_Table).w,a1
+	movea.l	(Block_Table).w,a1
 	adda.w	d3,a1		; a1 = address of current 16x16 in the block table
 	bsr.w	ProcessAndWriteBlock_Horizontal
 	addq.w	#2,a0		; move onto next 16x16
@@ -19395,7 +19395,7 @@ DrawBlockRow:
 -	move.w	(a0),d3
 	andi.w	#$3FF,d3
 	lsl.w	#3,d3
-	lea	(Block_Table).w,a1
+	movea.l	(Block_Table).w,a1
 	adda.w	d3,a1
 	bsr.w	ProcessAndWriteBlock_DoubleResolution_Horizontal
 	addq.w	#2,a0
@@ -19421,7 +19421,7 @@ DrawBlockRow:
 -	move.w	(a0),d3
 	andi.w	#$3FF,d3
 	lsl.w	#3,d3
-	lea	(Block_Table).w,a1
+	movea.l	(Block_Table).w,a1
 	adda.w	d3,a1
 	bsr.w	ProcessAndWriteBlock_DoubleResolution_Horizontal
 	addq.w	#2,a0
@@ -19683,7 +19683,7 @@ ProcessAndWriteBlock_DoubleResolution_Vertical:
 GetBlock:
 	add.w	(a3),d5
 	add.w	4(a3),d4
-	lea	(Block_Table).w,a1
+	movea.l	(Block_Table).w,a1
 	move.w	d4,d3		; d3 = camera Y pos + offset
 	add.w	d3,d3
 	andi.w	#$F00,d3	; limit to units of $100 ($100 = $80 * 2, $80 = height of a 128x128)
@@ -19953,29 +19953,16 @@ loadZoneBlockMaps:
 	addq.w	#4,a2
 	move.l	(a2)+,d0
 	andi.l	#$FFFFFF,d0	; pointer to block mappings
-	movea.l	d0,a0
-	lea	(Block_Table).w,a1
-	jsrto	JmpTo_KosDec	; load block maps
-	cmpi.b	#hill_top_zone,(Current_Zone).w
-	bne.s	+
-	lea	(Block_Table+$980).w,a1
-	lea	(BM16_HTZ).l,a0
-	jsrto	JmpTo_KosDec	; patch for Hill Top Zone block map
-+
+	move.l	d0,(Block_Table).w
 	tst.w	(Two_player_mode).w
 	beq.s	+
-	; In 2P mode, adjust the block table to halve the pattern index on each block
-	lea	(Block_Table).w,a1
-
-	move.w	#bytesToWcnt(Block_Table_End-Block_Table),d2
--	move.w	(a1),d0		; read an entry
-	move.w	d0,d1
-	andi.w	#$F800,d0	; filter for upper five bits
-	andi.w	#$7FF,d1	; filter for lower eleven bits (patternIndex)
-	lsr.w	#1,d1		; halve the pattern index
-	or.w	d1,d0		; put the parts back together
-	move.w	d0,(a1)+	; change the entry with the adjusted value
-	dbf	d2,-
+	moveq	#0,d1
+	move.b	(Current_Zone).w,d1
+	add.w	d1,d1
+	add.w	d1,d1
+	lea	(LevelBlocks2P).l,a1
+	lea	(a1,d1.w),a1
+	move.l	(a1)+,(Block_Table).w
 +
 	move.l	(a2)+,d0
 	andi.l	#$FFFFFF,d0	; pointer to chunk mappings
@@ -86585,7 +86572,7 @@ LoadAnimatedBlocks:
 +
 	tst.w	(a0)
 	beq.s	+	; rts
-	lea	(Block_Table).w,a1
+	movea.l	(Block_Table).w,a1
 	adda.w	(a0)+,a1
 	move.w	(a0)+,d1
 	tst.w	(Two_player_mode).w
@@ -88989,7 +88976,7 @@ LevelArtPointers:
 	levartptrs PLCID_Mtz1,        PLCID_Mtz2,      PalID_MTZ,  ArtKos_MTZ, BM16_MTZ, BM128_MTZ ; MTZ1,2 ; METROPOLIS ZONE ACTS 1 & 2
 	levartptrs PLCID_Mtz1,        PLCID_Mtz2,      PalID_MTZ,  ArtKos_MTZ, BM16_MTZ, BM128_MTZ ; MTZ3   ; METROPOLIS ZONE ACT 3
 	levartptrs PLCID_Wfz1,        PLCID_Wfz2,      PalID_WFZ,  ArtKos_SCZ, BM16_WFZ, BM128_WFZ ; WFZ    ; WING FORTRESS ZONE
-	levartptrs PLCID_Htz1,        PLCID_Htz2,      PalID_HTZ,  ArtKos_EHZ, BM16_EHZ, BM128_EHZ ; HTZ    ; HILL TOP ZONE
+	levartptrs PLCID_Htz1,        PLCID_Htz2,      PalID_HTZ,  ArtKos_EHZ, BM16_HTZ, BM128_EHZ ; HTZ    ; HILL TOP ZONE
 	levartptrs PLCID_Hpz1,        PLCID_Hpz2,      PalID_HPZ,  ArtKos_HPZ, BM16_HPZ, BM128_HPZ ; HPZ    ; HIDDEN PALACE ZONE (UNUSED)
 	levartptrs PLCID_Unused3,     PLCID_Unused4,   PalID_EHZ4, ArtKos_EHZ, BM16_EHZ, BM128_EHZ ; Zone 9 ; LEVEL 9 (UNUSED)
 	levartptrs PLCID_Ooz1,        PLCID_Ooz2,      PalID_OOZ,  ArtKos_OOZ, BM16_OOZ, BM128_OOZ ; OOZ    ; OIL OCEAN ZONE
@@ -89004,6 +88991,25 @@ LevelArtPointers:
 	message "Warning: Table LevelArtPointers has \{cur_zone_id/1.0} entries, but it should have \{no_of_zones/1.0} entries"
     endif
 	!org LevelArtPointers+cur_zone_id*12
+
+LevelBlocks2P:
+	dc.l	BM16_EHZ_2P	; EHZ
+	dc.l	BM16_EHZ_2P	; Zone 1
+	dc.l	BM16_EHZ_2P	; WZ
+	dc.l	BM16_EHZ_2P	; Zone 3
+	dc.l	BM16_EHZ_2P	; MTZ1,2
+	dc.l	BM16_EHZ_2P	; MTZ3
+	dc.l	BM16_EHZ_2P	; WFZ
+	dc.l	BM16_EHZ_2P	; HTZ
+	dc.l	BM16_EHZ_2P	; HPZ
+	dc.l	BM16_EHZ_2P	; Zone 9
+	dc.l	BM16_EHZ_2P	; OOZ
+	dc.l	BM16_MCZ_2P	; MCZ
+	dc.l	BM16_CNZ_2P	; CNZ
+	dc.l	BM16_EHZ_2P	; CPZ
+	dc.l	BM16_EHZ_2P	; DEZ
+	dc.l	BM16_EHZ_2P	; ARZ
+	dc.l	BM16_EHZ_2P	; SCZ
 
 ; ---------------------------------------------------------------------------
 ; END Art_Ptrs_Array[17]
@@ -90706,46 +90712,49 @@ ArtNem_EndingTitle:		BINCLUDE	"art/nemesis/Sonic the Hedgehog 2 image at end of 
 ; As noted earlier, each element of the table provides 'i' for blockMapTable[i][j].
 ; */
 
-; All of these are compressed in the Kosinski format.
+; All of these are compressed in the Kosinski format except blocks.
 
-BM16_EHZ:	BINCLUDE	"mappings/16x16/EHZ.kos"
+BM16_EHZ:	BINCLUDE	"mappings/16x16/EHZ.unc"
+BM16_EHZ_2P:	BINCLUDE	"mappings/16x16/EHZ_2P.unc"
 ArtKos_EHZ:	BINCLUDE	"art/kosinski/EHZ_HTZ.kos"
-BM16_HTZ:	BINCLUDE	"mappings/16x16/HTZ.kos"
+BM16_HTZ:	BINCLUDE	"mappings/16x16/HTZ.unc"
 ArtKos_HTZ:	BINCLUDE	"art/kosinski/HTZ_Supp.kos" ; HTZ pattern suppliment to EHZ level patterns
 BM128_EHZ:	BINCLUDE	"mappings/128x128/EHZ_HTZ.kos"
 
-BM16_MTZ:	BINCLUDE	"mappings/16x16/MTZ.kos"
+BM16_MTZ:	BINCLUDE	"mappings/16x16/MTZ.unc"
 ArtKos_MTZ:	BINCLUDE	"art/kosinski/MTZ.kos"
 BM128_MTZ:	BINCLUDE	"mappings/128x128/MTZ.kos"
 
-BM16_HPZ:	;BINCLUDE	"mappings/16x16/HPZ.kos"
+BM16_HPZ:	;BINCLUDE	"mappings/16x16/HPZ.unc"
 ArtKos_HPZ:	;BINCLUDE	"art/kosinski/HPZ.kos"
 BM128_HPZ:	;BINCLUDE	"mappings/128x128/HPZ.kos"
 
-BM16_OOZ:	BINCLUDE	"mappings/16x16/OOZ.kos"
+BM16_OOZ:	BINCLUDE	"mappings/16x16/OOZ.unc"
 ArtKos_OOZ:	BINCLUDE	"art/kosinski/OOZ.kos"
 BM128_OOZ:	BINCLUDE	"mappings/128x128/OOZ.kos"
 
-BM16_MCZ:	BINCLUDE	"mappings/16x16/MCZ.kos"
+BM16_MCZ:	BINCLUDE	"mappings/16x16/MCZ.unc"
+BM16_MCZ_2P:	BINCLUDE	"mappings/16x16/MCZ_2P.unc"
 ArtKos_MCZ:	BINCLUDE	"art/kosinski/MCZ.kos"
 BM128_MCZ:	BINCLUDE	"mappings/128x128/MCZ.kos"
 
-BM16_CNZ:	BINCLUDE	"mappings/16x16/CNZ.kos"
+BM16_CNZ:	BINCLUDE	"mappings/16x16/CNZ.unc"
+BM16_CNZ_2P:	BINCLUDE	"mappings/16x16/CNZ_2P.unc"
 ArtKos_CNZ:	BINCLUDE	"art/kosinski/CNZ.kos"
 BM128_CNZ:	BINCLUDE	"mappings/128x128/CNZ.kos"
 
-BM16_CPZ:	BINCLUDE	"mappings/16x16/CPZ_DEZ.kos"
+BM16_CPZ:	BINCLUDE	"mappings/16x16/CPZ_DEZ.unc"
 ArtKos_CPZ:	BINCLUDE	"art/kosinski/CPZ_DEZ.kos"
 BM128_CPZ:	BINCLUDE	"mappings/128x128/CPZ_DEZ.kos"
 
 ; This file contains $320 blocks, overflowing the 'Block_table' buffer. This causes
 ; 'TempArray_LayerDef' to be overwritten with (empty) block data.
 ; If only 'fixBugs' could fix this...
-BM16_ARZ:	BINCLUDE	"mappings/16x16/ARZ.kos"
+BM16_ARZ:	BINCLUDE	"mappings/16x16/ARZ.unc"
 ArtKos_ARZ:	BINCLUDE	"art/kosinski/ARZ.kos"
 BM128_ARZ:	BINCLUDE	"mappings/128x128/ARZ.kos"
 
-BM16_WFZ:	BINCLUDE	"mappings/16x16/WFZ_SCZ.kos"
+BM16_WFZ:	BINCLUDE	"mappings/16x16/WFZ_SCZ.unc"
 ArtKos_SCZ:	BINCLUDE	"art/kosinski/WFZ_SCZ.kos"
 ArtKos_WFZ:	BINCLUDE	"art/kosinski/WFZ_Supp.kos" ; WFZ pattern suppliment to SCZ tiles
 BM128_WFZ:	BINCLUDE	"mappings/128x128/WFZ_SCZ.kos"

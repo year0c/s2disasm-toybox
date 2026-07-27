@@ -929,8 +929,10 @@ Chunk_Table_End:
 Level_Layout:			ds.b	$1000
 Level_Layout_End:
 
-Block_Table:			ds.w	$C00
-Block_Table_End:
+				ds.b	$1400	; unused
+Snd_driver_RAM:			ds.b	$400	; $FFFFF100-$FFFFF5FF ; unused, leftover from the Sonic 1 sound driver (and used by it when you port it to Sonic 2)
+Snd_driver_RAM_end		= *
+SegaCD_Mode:		= Snd_driver_RAM+$3F0
 
 TempArray_LayerDef:		ds.b	$200	; used by some layer deformation routines
 Decomp_Buffer:			ds.b	$200
@@ -1024,11 +1026,7 @@ LevelOnly_Object_RAM_End:
 Primary_Collision:		ds.l	1
 Secondary_Collision:		ds.l	1
 
-Snd_driver_RAM:			ds.b $400	; $FFFFF100-$FFFFF5FF ; unused, leftover from the Sonic 1 sound driver (and used by it when you port it to Sonic 2)
-Snd_driver_RAM_end		= *
-SegaCD_Mode:		= Snd_driver_RAM+$3F0
-
-				ds.b	$1F8	; unused
+				ds.b	$5F8	; unused
 
 SS_Shared_RAM_End:
 
@@ -1313,7 +1311,9 @@ Sonic_Look_delay_counter:	ds.w	1	; 2 bytes
 Tails_Look_delay_counter:	ds.w	1	; 2 bytes
 Super_Sonic_frame_count:	ds.w	1
 Camera_ARZ_BG_X_pos:		ds.l	1
-				ds.b	$A	; $FFFFF676-$FFFFF67F ; seems unused
+Block_Table:			ds.l	1
+Block_Table_End:
+				ds.b	6	; $FFFFF676-$FFFFF67F ; seems unused
 MiscLevelVariables_End
 
 Plc_Buffer:			ds.b	6*16	; Pattern load queue (each entry is 6 bytes)
