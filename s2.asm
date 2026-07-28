@@ -1278,6 +1278,7 @@ loc_1072:
 	clr.b	(Do_Updates_in_H_int).w
 	movem.l	d0-a6,-(sp)
 	bsr.w	Do_Updates
+	SMPS_UpdateSoundDriver
 	movem.l	(sp)+,d0-a6
 	rte
 
