@@ -47,6 +47,9 @@ subtype =		$28
 ; conventions specific to Sonic/Tails (Obj01, Obj02, and ObjDB):
 ; note: $1F, $20, and $21 are unused and available (however, $1F is cleared by loc_A53A and ObjB2_Landed_on_plane)
 inertia =		$14 ; and $15 ; directionless representation of speed... not updated in the air
+flying =		$20	; 0 for normal, 1 for flying, 2+ for flying unaffected by gravity
+flying_timer =		$21	; remaining flight time for Tails (frames / 2)
+carry_delay =		$23	; number of frames before main character can be carried by Tails after jumping off; starts at either 18 or 60 and decrements to 0
 flip_angle =		$27 ; angle about the x axis (360 degrees = 256) (twist/tumble)
 air_left =		$28
 flip_turned =		$29 ; 0 for normal, 1 to invert flipping (it's a 180 degree rotation about the axis of Sonic's spine, so he stays in the same position but looks turned around)
@@ -236,6 +239,7 @@ status.npc.no_balancing		= 7 ; Prevents player from performing their balancing a
 status_secondary.shield		= 0
 status_secondary.invincible	= 1
 status_secondary.speed_shoes	= 2
+status_secondary.carry		= 3
 status_secondary.sliding	= 7
 
 ; Ugly old constants, kept for backwards-compatibility.
@@ -1451,7 +1455,9 @@ MTZCylinder_Angle_Sonic:	ds.b	1
 MTZCylinder_Angle_Tails:	ds.b	1
 				ds.b	$A	; $FFFFF7B4-$FFFFF7BD ; seems unused
 BigRingGraphics:		ds.w	1	; S1 holdover
-				ds.b	7	; $FFFFF7C0-$FFFFF7C6 ; seems unused
+Sidekick_X_vel_copy:		ds.w	1	; copy of Tails's X speed
+Sidekick_Y_vel_copy:		ds.w	1	; copy of Tails's Y speed
+				ds.b	3	; $FFFFF7C4-$FFFFF7C6 ; seems unused
 WindTunnel_flag:		ds.b	1
 				ds.b	1	; $FFFFF7C8 ; seems unused
 WindTunnel_holding_flag:	ds.b	1
