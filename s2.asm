@@ -36291,7 +36291,7 @@ Obj01_InWater:
 ; loc_1A1FE:
 Obj01_OutWater:
 	bclr	#status.player.underwater,status(a0) ; unset underwater flag
-	beq.s	return_1A18C ; if already above water, branch
+	beq.w	return_1A18C ; if already above water, branch
 
 	movea.l	a0,a1
 	bsr.w	ResumeMusic
@@ -39043,11 +39043,12 @@ TailsCPU_Flying:
 	ori.b	#1<<status.player.in_air,status(a0)	; set Tails' "in-air" status bit
 	move.w	#0,x_pos(a0)
 	move.w	#0,y_pos(a0)
-	move.b	#AniIDTailsAni_Fly,anim(a0)
-	rts
+	bra.w	Tails_FlyingAnimation		; set flying animation
+	
 ; ---------------------------------------------------------------------------
 ; loc_1BBC8:
 TailsCPU_FlyingOnscreen:
+	bsr.w	Tails_FlyingAnimation		; set flying animation
 	move.w	#0,(Tails_respawn_counter).w
 ; loc_1BBCE:
 TailsCPU_Flying_Part2:
@@ -39150,8 +39151,8 @@ TailsCPU_Normal:
 	move.b	#$81,obj_control(a0)
 	andi.b	#1<<status.player.underwater,status(a0)	; keep Tails' underwater status bit
 	ori.b	#1<<status.player.in_air,status(a0)	; set Tails' "in-air" status bit
-	move.b	#AniIDTailsAni_Fly,anim(a0)
-	rts
+	bra.w	Tails_FlyingAnimation		; set flying animation
+
 ; ---------------------------------------------------------------------------
 ; loc_1BD0E:
 TailsCPU_Normal_SonicOK:
@@ -39286,8 +39287,8 @@ TailsCPU_Despawn:
 	move.b	#1<<status.player.in_air,status(a0)
 	move.w	#$4000,x_pos(a0)
 	move.w	#0,y_pos(a0)
-	move.b	#AniIDTailsAni_Fly,anim(a0)
-	rts
+	bra.w	Tails_FlyingAnimation		; set flying animation
+
 ; ===========================================================================
 ; sub_1BE66:
 TailsCPU_CheckDespawn:
@@ -40384,7 +40385,7 @@ Tails_CheckFlying:
 	addq.w	#1,y_pos(a0)			; adjust Y-position a bit
 	move.b	#1,flying(a0)			; set flying mode flag
 	move.b	#(8*60)/2,flying_timer(a0)	; set flying timer to 8 seconds (divided by 2)
-	move.b	#AniIDTailsAni_Fly,anim(a0)	; set flying animation
+	bra.w	Tails_FlyingAnimation		; set flying animation
 
 .noflight:
 	rts
@@ -40447,14 +40448,70 @@ Tails_Flying:
 	move.w	(Camera_Min_Y_pos).w,d0		; get upper boundary value
 	addi.w	#$10,d0				; add $10 to it
 	cmp.w	y_pos(a0),d0			; is Tails close enough to the top boundary?
-	blt.s	.setanim			; if not, branch
+	blt.s	Tails_FlyingAnimation		; if not, branch
 	tst.w	y_vel(a0)			; is Tails moving upwards?
-	bpl.s	.setanim			; if not, branch
+	bpl.s	Tails_FlyingAnimation		; if not, branch
 	move.w	#0,y_vel(a0)			; clear Tails' Y velocity
-.setanim:
-	move.b	#AniIDTailsAni_Fly,anim(a0)	; set animation
-	rts
 ; End of subroutine Tails_Flying
+
+; ---------------------------------------------------------------------------
+; Subroutine to pick a correct animation for Tails when flying or swimming
+; ---------------------------------------------------------------------------
+
+; =============== S U B R O U T I N E =======================================
+
+Tails_FlyingAnimation:
+	moveq	#0,d0				; clear d0
+	move.w	#SndID_Flying,d1		; prepare flying sound to play
+	tst.w	y_vel(a0)			; is Tails moving upwards?
+	bpl.s	.movingdown			; if not, branch
+	addq.b	#1,d0				; use upwards sprites
+		
+.movingdown:
+	tst.w	(Player_mode).w			; is this a Sonic & Tails game?
+	bne.s	.nocarry			; if not, branch
+	cmpi.w	#4,(Tails_CPU_routine).w	; is Tails respawning?
+	beq.s	.nottired			; if yes, check for water only
+	btst	#status_secondary.carry,status_secondary-object_size(a0)	; is Tails currently carrying Sonic?
+	beq.s	.nocarry			; if not, branch
+	addq.b	#2,d0				; use carrying sprites
+	
+.nocarry:
+	tst.b	flying_timer(a0)		; is Tails tired?
+	bne.s	.nottired			; if not, branch
+	addq.b	#4,d0				; use tired sprites
+	move.w	#SndID_FlyingTired,d1		; prepare to play tired flying sound instead
+	
+.nottired:
+	btst	#status.player.underwater,status(a0)	; is Tails underwater?
+	beq.s	.display			; if not, branch
+	addq.b	#8,d0				; use swimming sprites
+	moveq	#0,d1				; no sound underwater
+
+.display:
+	move.b	.animationtable(pc,d0.w),anim(a0)	; get correct animation ID
+	tst.b	d1				; is there a sound to play?
+	beq.s	.nosound			; if not, branch
+	move.b	(Level_frame_counter+1).w,d0	; get universal timer value
+	addq.b	#8,d0				; prevent the sound from being overlapped
+	andi.b	#$F,d0				; get only lower nibble (0-15/0-$F)
+	bne.s	.nosound			; play sound only every 16th frame
+	move.w	d1,d0				; get appropriate sound
+	jmp	(PlaySoundLocal).l		; if Tails is on-screen, play sound 
+.nosound:
+	rts
+
+; ---------------------------------------------------------------------------
+; A lookup table for Tails' flying/swimming animation
+;	dc.b	moving downwards, moving upwards, carrying Sonic downwards, carrying Sonic upwards
+
+.animationtable:
+	dc.b	      AniIDTailsAni_Fly,     AniIDTailsAni_FlyUp,      AniIDTailsAni_Carry, AniIDTailsAni_CarryUp	; normal
+	dc.b	    AniIDTailsAni_Tired,     AniIDTailsAni_Tired, AniIDTailsAni_CarryTired, AniIDTailsAni_CarryTired	; tired
+	dc.b	     AniIDTailsAni_Swim,    AniIDTailsAni_SwimUp,  AniIDTailsAni_SwimCarry, AniIDTailsAni_SwimCarry	; swimming
+	dc.b	AniIDTailsAni_SwimTired, AniIDTailsAni_SwimTired,  AniIDTailsAni_SwimCarry, AniIDTailsAni_SwimCarry	; swimming tired
+	even
+; End of subroutine Tails_FlyingAnimation
 
 ; ---------------------------------------------------------------------------
 ; Subroutine to control Sonic being carried by Tails during flight
@@ -40566,6 +40623,8 @@ Tails_CheckCarry:
 	bset	#status.player.in_air,status(a1); set "in-air" status
 	bclr	#status.player.rolljumping,status(a1) ; clear "rolljumping" flag
 	move.w	#AniIDSonAni_Hang2<<8,anim(a1)	; set and force hanging animation
+	move.w	#SndID_Grab,d0			; load grabbing sound
+	jsr	(PlaySound).l			; play it
 	
 ; End of subroutine Tails_CheckCarry
 	; continue straight to Tails_CarryUpdatePosition
@@ -41660,39 +41719,48 @@ loc_1D006:
 ; ---------------------------------------------------------------------------
 ; off_1D038:
 TailsAniData:		offsetTable
-			offsetTableEntry.w TailsAni_Walk	;  0 ;   0
-			offsetTableEntry.w TailsAni_Run		;  1 ;   1
-			offsetTableEntry.w TailsAni_Roll	;  2 ;   2
-			offsetTableEntry.w TailsAni_Roll2	;  3 ;   3
-			offsetTableEntry.w TailsAni_Push	;  4 ;   4
-			offsetTableEntry.w TailsAni_Wait	;  5 ;   5
-			offsetTableEntry.w TailsAni_Balance	;  6 ;   6
-			offsetTableEntry.w TailsAni_LookUp	;  7 ;   7
-			offsetTableEntry.w TailsAni_Duck	;  8 ;   8
-			offsetTableEntry.w TailsAni_Spindash	;  9 ;   9
-			offsetTableEntry.w TailsAni_Dummy1	; 10 ;  $A
-			offsetTableEntry.w TailsAni_Dummy2	; 11 ;  $B
-			offsetTableEntry.w TailsAni_Dummy3	; 12 ;  $C
-			offsetTableEntry.w TailsAni_Stop	; 13 ;  $D
-			offsetTableEntry.w TailsAni_Float	; 14 ;  $E
-			offsetTableEntry.w TailsAni_Float2	; 15 ;  $F
-			offsetTableEntry.w TailsAni_Spring	; 16 ; $10
-			offsetTableEntry.w TailsAni_Hang	; 17 ; $11
-			offsetTableEntry.w TailsAni_Blink	; 18 ; $12
-			offsetTableEntry.w TailsAni_Blink2	; 19 ; $13
-			offsetTableEntry.w TailsAni_Hang2	; 20 ; $14
-			offsetTableEntry.w TailsAni_Bubble	; 21 ; $15
-			offsetTableEntry.w TailsAni_DeathBW	; 22 ; $16
-			offsetTableEntry.w TailsAni_Drown	; 23 ; $17
-			offsetTableEntry.w TailsAni_Death	; 24 ; $18
-			offsetTableEntry.w TailsAni_Hurt	; 25 ; $19
-			offsetTableEntry.w TailsAni_Hurt2	; 26 ; $1A
-			offsetTableEntry.w TailsAni_Slide	; 27 ; $1B
-			offsetTableEntry.w TailsAni_Blank	; 28 ; $1C
-			offsetTableEntry.w TailsAni_Dummy4	; 29 ; $1D
-			offsetTableEntry.w TailsAni_Dummy5	; 30 ; $1E
-TailsAni_HaulAss_ptr:	offsetTableEntry.w TailsAni_HaulAss	; 31 ; $1F
-TailsAni_Fly_ptr:	offsetTableEntry.w TailsAni_Fly		; 32 ; $20
+			offsetTableEntry.w TailsAni_Walk		;  0 ;   0
+			offsetTableEntry.w TailsAni_Run			;  1 ;   1
+			offsetTableEntry.w TailsAni_Roll		;  2 ;   2
+			offsetTableEntry.w TailsAni_Roll2		;  3 ;   3
+			offsetTableEntry.w TailsAni_Push		;  4 ;   4
+			offsetTableEntry.w TailsAni_Wait		;  5 ;   5
+			offsetTableEntry.w TailsAni_Balance		;  6 ;   6
+			offsetTableEntry.w TailsAni_LookUp		;  7 ;   7
+			offsetTableEntry.w TailsAni_Duck		;  8 ;   8
+			offsetTableEntry.w TailsAni_Spindash		;  9 ;   9
+			offsetTableEntry.w TailsAni_Dummy1		; 10 ;  $A
+			offsetTableEntry.w TailsAni_Dummy2		; 11 ;  $B
+			offsetTableEntry.w TailsAni_Dummy3		; 12 ;  $C
+			offsetTableEntry.w TailsAni_Stop		; 13 ;  $D
+			offsetTableEntry.w TailsAni_Float		; 14 ;  $E
+			offsetTableEntry.w TailsAni_Float2		; 15 ;  $F
+			offsetTableEntry.w TailsAni_Spring		; 16 ; $10
+			offsetTableEntry.w TailsAni_Hang		; 17 ; $11
+			offsetTableEntry.w TailsAni_Blink		; 18 ; $12
+			offsetTableEntry.w TailsAni_Blink2		; 19 ; $13
+			offsetTableEntry.w TailsAni_Hang2		; 20 ; $14
+			offsetTableEntry.w TailsAni_Bubble		; 21 ; $15
+			offsetTableEntry.w TailsAni_DeathBW		; 22 ; $16
+			offsetTableEntry.w TailsAni_Drown		; 23 ; $17
+			offsetTableEntry.w TailsAni_Death		; 24 ; $18
+			offsetTableEntry.w TailsAni_Hurt		; 25 ; $19
+			offsetTableEntry.w TailsAni_Hurt2		; 26 ; $1A
+			offsetTableEntry.w TailsAni_Slide		; 27 ; $1B
+			offsetTableEntry.w TailsAni_Blank		; 28 ; $1C
+			offsetTableEntry.w TailsAni_Dummy4		; 29 ; $1D
+			offsetTableEntry.w TailsAni_Dummy5		; 30 ; $1E
+TailsAni_HaulAss_ptr:	offsetTableEntry.w TailsAni_HaulAss		; 31 ; $1F
+TailsAni_Fly_ptr:	offsetTableEntry.w TailsAni_Fly			; 32 ; $20
+TailsAni_FlyUp_ptr:	offsetTableEntry.w TailsAni_Fly			; 33 ; $21 (duplicate)
+TailsAni_Carry_ptr:	offsetTableEntry.w TailsAni_Carry		; 34 ; $22
+TailsAni_CarryUp_ptr:	offsetTableEntry.w TailsAni_CarryUp		; 35 ; $23
+TailsAni_Tired_ptr:	offsetTableEntry.w TailsAni_Tired		; 36 ; $24
+TailsAni_CarryTired_ptr:	offsetTableEntry.w TailsAni_CarryTired	; 37 ; $25			
+TailsAni_Swim_ptr:	offsetTableEntry.w TailsAni_Swim		; 38 ; $26
+TailsAni_SwimUp_ptr:	offsetTableEntry.w TailsAni_SwimUp		; 39 ; $27
+TailsAni_SwimCarry_ptr:	offsetTableEntry.w TailsAni_SwimCarry		; 40 ; $28			
+TailsAni_SwimTired_ptr:	offsetTableEntry.w TailsAni_SwimTired		; 41 ; $29
 
 TailsAni_Walk:	dc.b $FF,$10,$11,$12,$13,$14,$15, $E, $F,$FF
 	rev02even
@@ -41763,7 +41831,23 @@ TailsAni_Dummy5:	dc.b   3,  1,  2,  3,  4,  5,  6,  7,  8,$FF
 TailsAni_HaulAss:	dc.b $FF,$32,$33,$FF
 			dc.b $FF,$FF,$FF,$FF,$FF,$FF
 	rev02even
-TailsAni_Fly:		dc.b   1,$5E,$5F,$FF
+TailsAni_Fly:		dc.b	$3F, $8B, $FF
+	rev02even
+TailsAni_Carry:		dc.b	$3F, $8C, $FF
+	rev02even
+TailsAni_CarryUp:	dc.b	$3F, $8D, $FF
+	rev02even
+TailsAni_Tired:		dc.b	$B, $8E, $8F, $FF
+	rev02even
+TailsAni_CarryTired:	dc.b	$B, $90, $91, $FF
+	rev02even
+TailsAni_Swim:		dc.b	7, $92, $93, $94, $95, $96, $FF
+	rev02even
+TailsAni_SwimUp:	dc.b	3, $92, $93, $94, $95, $96, $FF
+	rev02even
+TailsAni_SwimCarry:	dc.b	4, $97, $98, $FF
+	rev02even
+TailsAni_SwimTired:	dc.b	$B, $99, $9A, $9B, $9A, $FF
 	even
 
 ; ===========================================================================
@@ -41909,29 +41993,33 @@ Obj05_Main:
 ; chooses which animation script to run depending on what Tails is doing
 ; byte_1D29E:
 Obj05AniSelection:
-	dc.b	0,0	; TailsAni_Walk,Run	->
-	dc.b	3	; TailsAni_Roll		-> Directional
-	dc.b	3	; TailsAni_Roll2	-> Directional
-	dc.b	9	; TailsAni_Push		-> Pushing
-	dc.b	1	; TailsAni_Wait		-> Swish
-	dc.b	0	; TailsAni_Balance	-> Blank
-	dc.b	2	; TailsAni_LookUp	-> Flick
-	dc.b	1	; TailsAni_Duck		-> Swish
-	dc.b	7	; TailsAni_Spindash	-> Spindash
-	dc.b	0,0,0	; TailsAni_Dummy1,2,3	->
-	dc.b	8	; TailsAni_Stop		-> Skidding
-	dc.b	0,0	; TailsAni_Float,2	->
-	dc.b	0	; TailsAni_Spring	->
-	dc.b	0	; TailsAni_Hang		->
-	dc.b	0,0	; TailsAni_Blink,2	->
-	dc.b	$A	; TailsAni_Hang2	-> Hanging
-	dc.b	0	; TailsAni_Bubble	->
-	dc.b	0,0,0,0	; TailsAni_Death,2,3,4	->
-	dc.b	0,0	; TailsAni_Hurt,Slide	->
-	dc.b	0	; TailsAni_Blank	->
-	dc.b	0,0	; TailsAni_Dummy4,5	->
-	dc.b	0	; TailsAni_HaulAss	->
-	dc.b	0	; TailsAni_Fly		->
+	dc.b	0,0		; TailsAni_Walk,Run		->
+	dc.b	3		; TailsAni_Roll			-> Directional
+	dc.b	3		; TailsAni_Roll2		-> Directional
+	dc.b	9		; TailsAni_Push			-> Pushing
+	dc.b	1		; TailsAni_Wait			-> Swish
+	dc.b	0		; TailsAni_Balance		-> Blank
+	dc.b	2		; TailsAni_LookUp		-> Flick
+	dc.b	1		; TailsAni_Duck			-> Swish
+	dc.b	7		; TailsAni_Spindash		-> Spindash
+	dc.b	0,0,0		; TailsAni_Dummy1,2,3		->
+	dc.b	8		; TailsAni_Stop			-> Skidding
+	dc.b	0,0		; TailsAni_Float,2		->
+	dc.b	0		; TailsAni_Spring		->
+	dc.b	0		; TailsAni_Hang			->
+	dc.b	0,0		; TailsAni_Blink,2		->
+	dc.b	$A		; TailsAni_Hang2		-> Hanging
+	dc.b	0		; TailsAni_Bubble		->
+	dc.b	0,0,0,0		; TailsAni_Death,2,3,4		->
+	dc.b	0,0		; TailsAni_Hurt,Slide		->
+	dc.b	0		; TailsAni_Blank		->
+	dc.b	0,0		; TailsAni_Dummy4,5		->
+	dc.b	0		; TailsAni_HaulAss		->
+	dc.b	$B, $C		; TailsAni_Fly,Up		-> Flying, Flying Fast
+	dc.b	$B, $C		; TailsAni_Carry,Up		->
+	dc.b	$B, $B		; TailsAni_Tired,CarryTired	->
+	dc.b	0, 0, 0, 0	; TailsAni_Swim et al.		-> Swimming (blank)
+
 	even
 
 ; ---------------------------------------------------------------------------
@@ -41950,6 +42038,8 @@ Obj05AniData:	offsetTable
 		offsetTableEntry.w Obj05Ani_Skidding	;  8
 		offsetTableEntry.w Obj05Ani_Pushing	;  9
 		offsetTableEntry.w Obj05Ani_Hanging	; $A
+		offsetTableEntry.w Obj05Ani_Flying	; $B
+		offsetTableEntry.w Obj05Ani_FlyingFast	; $C
 
 Obj05Ani_Blank:		dc.b $20,  0,$FF
 	rev02even
@@ -41972,6 +42062,10 @@ Obj05Ani_Skidding:	dc.b   2,$87,$88,$89,$8A,$FF
 Obj05Ani_Pushing:	dc.b   9,$87,$88,$89,$8A,$FF
 	rev02even
 Obj05Ani_Hanging:	dc.b   9,$81,$82,$83,$84,$FF
+	rev02even
+Obj05Ani_Flying:	dc.b   1,$5E,$5F,$FF
+	rev02even
+Obj05Ani_FlyingFast:	dc.b   0,$5E,$5F,$FF
 	even
 
 ; ===========================================================================
@@ -47700,7 +47794,7 @@ Obj14_UpdateMappingAndCollision:
 	move.b	width_pixels(a0),d1
 	moveq	#8,d3
 	move.w	(sp)+,d4
-	bra.w	SlopedPlatform
+	jsr	(SlopedPlatform).l
 ; ===========================================================================
 
 return_21A74:
@@ -57954,7 +58048,7 @@ BranchTo2_JmpTo26_MarkObjGone ; BranchTo
 
 loc_2A990:
 	cmpi.b	#4,routine(a1)
-	bhs.s	return_2AA10
+	bhs.w	return_2AA10
 	tst.b	obj_control(a1)
 	bne.s	return_2AA10
 	move.w	x_pos(a1),d0
@@ -79897,7 +79991,7 @@ ObjB5_Animate:
 ; loc_3B456:
 ObjB5_CheckPlayers:
 	cmpi.b	#4,anim(a0)
-	bne.s	++	; rts
+	bne.w	++	; rts
 	lea	(MainCharacter).w,a1 ; a1=character
 	bsr.w	ObjB5_CheckPlayer
 	lea	(Sidekick).w,a1 ; a1=character

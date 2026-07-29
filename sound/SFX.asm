@@ -95,6 +95,9 @@ ptr_sndED:	SMPS_SFX_METADATA	SoundED, $71, 0
 ptr_sndEE:	SMPS_SFX_METADATA	SoundEE, $70, 0
 ptr_sndEF:	SMPS_SFX_METADATA	SoundEF, $70, 0
 ptr_sndF0:	SMPS_SFX_METADATA	SoundF0, $6F, 0
+ptr_sndF1:	SMPS_SFX_METADATA	SoundF1, $70, 0
+ptr_sndF2:	SMPS_SFX_METADATA	SoundF2, $70, 0
+ptr_sndF3:	SMPS_SFX_METADATA	SoundF3, $70, 0
 ptr_sndend
 
 ; ---------------------------------------------------------------------------
@@ -262,4 +265,10 @@ SoundEE:	include "sound/sfx/EE - Mecha Sonic Buzz.asm"
 SoundEF:	include "sound/sfx/EF - Large Laser.asm"
 	even
 SoundF0:	include "sound/sfx/F0 - Oil Slide.asm"
+	even
+SoundF1:	include "sound/sfx/F1 - Flying (Tired).asm"
+	even
+SoundF2:	include "sound/sfx/F2 - Flying.asm"
+	even
+SoundF3:	include "sound/sfx/F3 - Grab.asm"
 	even

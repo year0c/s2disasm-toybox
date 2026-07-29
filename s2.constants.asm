@@ -884,6 +884,15 @@ idstart :=	0
 
 AniIDTailsAni_HaulAss		= id(TailsAni_HaulAss_ptr)	; 31 ; $1F
 AniIDTailsAni_Fly		= id(TailsAni_Fly_ptr)		; 32 ; $20
+AniIDTailsAni_FlyUp		= id(TailsAni_FlyUp_ptr)	; 33 ; $21
+AniIDTailsAni_Carry		= id(TailsAni_Carry_ptr)	; 34 ; $22
+AniIDTailsAni_CarryUp		= id(TailsAni_CarryUp_ptr)	; 35 ; $23
+AniIDTailsAni_Tired		= id(TailsAni_Tired_ptr)	; 36 ; $24
+AniIDTailsAni_CarryTired	= id(TailsAni_CarryTired_ptr)	; 37 ; $25
+AniIDTailsAni_Swim		= id(TailsAni_Swim_ptr)		; 38 ; $26
+AniIDTailsAni_SwimUp		= id(TailsAni_SwimUp_ptr)	; 39 ; $27
+AniIDTailsAni_SwimCarry		= id(TailsAni_SwimCarry_ptr)	; 40 ; $28
+AniIDTailsAni_SwimTired		= id(TailsAni_SwimTired_ptr)	; 41 ; $29
 
 
 ; Other sizes

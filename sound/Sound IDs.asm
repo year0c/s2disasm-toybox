@@ -128,7 +128,10 @@ SndID_Error =			SMPS_id(ptr_sndED)	; CD
 SndID_MechaSonicBuzz =		SMPS_id(ptr_sndEE)	; CE
 SndID_LargeLaser =		SMPS_id(ptr_sndEF)	; CF
 SndID_OilSlide =		SMPS_id(ptr_sndF0)	; D0
-SndID__End =			SMPS_id(ptr_sndend)	; D1
+SndID_FlyingTired =		SMPS_id(ptr_sndF1)	; D1
+SndID_Flying =			SMPS_id(ptr_sndF2)	; D2
+SndID_Grab =			SMPS_id(ptr_sndF3)	; D3
+SndID__End =			SMPS_id(ptr_sndend)	; D4
 
 ; Sound command IDs
 offset := Sound_ExIndex
