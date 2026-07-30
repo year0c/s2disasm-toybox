@@ -36337,22 +36337,22 @@ Obj01_MdNormal_Checks:
 	move.b	(Ctrl_1_Press_Logical).w,d0
 	andi.b	#button_B_mask|button_C_mask|button_A_mask,d0
 	bne.s	Obj01_MdNormal
-	cmpi.b	#AniIDSonAni_Blink,anim(a0)
-	beq.s	Obj01_MdNormal_Skip
-	cmpi.b	#AniIDSonAni_GetUp,anim(a0)
-	beq.s	Obj01_MdNormal_Skip
+	;cmpi.b	#AniIDSonAni_Blink,anim(a0)
+	;beq.s	Obj01_MdNormal_Skip
+	;cmpi.b	#AniIDSonAni_GetUp,anim(a0)
+	;beq.s	Obj01_MdNormal_Skip
 	cmpi.b	#AniIDSonAni_Wait,anim(a0)
 	bne.s	Obj01_MdNormal
 	cmpi.b	#$1E,anim_frame(a0)
 	blo.s	Obj01_MdNormal
 	move.b	(Ctrl_1_Held_Logical).w,d0
 	andi.b	#button_up_mask|button_down_mask|button_left_mask|button_right_mask|button_B_mask|button_C_mask|button_A_mask,d0
-	beq.s	Obj01_MdNormal_Skip
-	move.b	#AniIDSonAni_Blink,anim(a0)
-	cmpi.b	#$AC,anim_frame(a0)
-	blo.s	Obj01_MdNormal_Skip
-	move.b	#AniIDSonAni_GetUp,anim(a0)
-	bra.s	Obj01_MdNormal_Skip
+	;beq.s	Obj01_MdNormal_Skip
+	;move.b	#AniIDSonAni_Blink,anim(a0)
+	;cmpi.b	#$AC,anim_frame(a0)
+	;blo.s	Obj01_MdNormal_Skip
+	;move.b	#AniIDSonAni_GetUp,anim(a0)
+	;bra.s	Obj01_MdNormal_Skip
 ; ---------------------------------------------------------------------------
 ; loc_1A2B8:
 Obj01_MdNormal:
@@ -36508,14 +36508,17 @@ Sonic_BalanceOnObjRight:
 	addq.w	#6,d2
 	cmp.w	d2,d1
 	blt.w	Obj01_ResetScr
-	move.b	#AniIDSonAni_Balance2,anim(a0)
+	;move.b	#AniIDSonAni_Balance2,anim(a0)
+	move.b	#AniIDSonAni_Balance,anim(a0)
 	bra.w	Obj01_ResetScr
 	; on right edge of object but facing left:
-+	move.b	#AniIDSonAni_Balance3,anim(a0)
+;+	move.b	#AniIDSonAni_Balance3,anim(a0)
++	move.b	#AniIDSonAni_Balance,anim(a0)
 	addq.w	#6,d2
 	cmp.w	d2,d1
 	blt.w	Obj01_ResetScr
-	move.b	#AniIDSonAni_Balance4,anim(a0)
+	;move.b	#AniIDSonAni_Balance4,anim(a0)
+	move.b	#AniIDSonAni_Balance,anim(a0)
 	bclr	#status.player.x_flip,status(a0)
 	bra.w	Obj01_ResetScr
 ; ---------------------------------------------------------------------------
@@ -36527,13 +36530,16 @@ Sonic_BalanceOnObjLeft:
 	move.b	#AniIDSonAni_Balance,anim(a0)
 	cmpi.w	#-4,d1
 	bge.w	Obj01_ResetScr
-	move.b	#AniIDSonAni_Balance2,anim(a0)
+	;move.b	#AniIDSonAni_Balance2,anim(a0)
+	move.b	#AniIDSonAni_Balance,anim(a0)
 	bra.w	Obj01_ResetScr
 	; on left edge of object but facing right:
-+	move.b	#AniIDSonAni_Balance3,anim(a0)
+;+	move.b	#AniIDSonAni_Balance3,anim(a0)
++	move.b	#AniIDSonAni_Balance,anim(a0)
 	cmpi.w	#-4,d1
 	bge.w	Obj01_ResetScr
-	move.b	#AniIDSonAni_Balance4,anim(a0)
+	;move.b	#AniIDSonAni_Balance4,anim(a0)
+	move.b	#AniIDSonAni_Balance,anim(a0)
 	bset	#status.player.x_flip,status(a0)
 	bra.w	Obj01_ResetScr
 ; ---------------------------------------------------------------------------
@@ -36555,16 +36561,19 @@ Sonic_Balance:
 	jsr	(ChkFloorEdge_Part2).l
 	cmpi.w	#$C,d1
 	blt.w	Obj01_ResetScr
-	move.b	#AniIDSonAni_Balance2,anim(a0)
+	;move.b	#AniIDSonAni_Balance2,anim(a0)
+	move.b	#AniIDSonAni_Balance,anim(a0)
 	bra.w	Obj01_ResetScr
 	; on right edge but facing left:
-+	move.b	#AniIDSonAni_Balance3,anim(a0)
+;+	move.b	#AniIDSonAni_Balance3,anim(a0)
++	move.b	#AniIDSonAni_Balance,anim(a0)
 	move.w	x_pos(a0),d3
 	subq.w	#6,d3
 	jsr	(ChkFloorEdge_Part2).l
 	cmpi.w	#$C,d1
 	blt.w	Obj01_ResetScr
-	move.b	#AniIDSonAni_Balance4,anim(a0)
+	;move.b	#AniIDSonAni_Balance4,anim(a0)
+	move.b	#AniIDSonAni_Balance,anim(a0)
 	bclr	#status.player.x_flip,status(a0)
 	bra.w	Obj01_ResetScr
 ; ---------------------------------------------------------------------------
@@ -36579,16 +36588,19 @@ Sonic_BalanceLeft:
 	jsr	(ChkFloorEdge_Part2).l
 	cmpi.w	#$C,d1
 	blt.w	Obj01_ResetScr
-	move.b	#AniIDSonAni_Balance2,anim(a0)
+	;move.b	#AniIDSonAni_Balance2,anim(a0)
+	move.b	#AniIDSonAni_Balance,anim(a0)
 	bra.w	Obj01_ResetScr
 	; on left edge but facing right:
-+	move.b	#AniIDSonAni_Balance3,anim(a0)
+;+	move.b	#AniIDSonAni_Balance3,anim(a0)
++	move.b	#AniIDSonAni_Balance,anim(a0)
 	move.w	x_pos(a0),d3
 	addq.w	#6,d3
 	jsr	(ChkFloorEdge_Part2).l
 	cmpi.w	#$C,d1
 	blt.w	Obj01_ResetScr
-	move.b	#AniIDSonAni_Balance4,anim(a0)
+	;move.b	#AniIDSonAni_Balance4,anim(a0)
+	move.b	#AniIDSonAni_Balance,anim(a0)
 	bset	#status.player.x_flip,status(a0)
 	bra.w	Obj01_ResetScr
 ; ---------------------------------------------------------------------------
@@ -38373,7 +38385,9 @@ SAnim_WalkRun:
 	cmpi.w	#$600,d2		; is Sonic at running speed?
 	bhs.s	+			; use running animation
 	lea	(SonAni_Walk).l,a1	; if yes, branch
-	add.b	d0,d0
+	move.b	d0,d1			; make octant modifier a multiple of 3
+	lsr.b	#1,d1			; (0, 3, 6, 9)
+	add.b	d1,d0			; this accounts for 6 total walking frames (Sonic 2 would change this to support 8)
 +
 	add.b	d0,d0
 	move.b	d0,d3
@@ -38552,9 +38566,9 @@ SonAni_Balance_ptr:		offsetTableEntry.w SonAni_Balance	;  6 ;   6
 SonAni_LookUp_ptr:		offsetTableEntry.w SonAni_LookUp	;  7 ;   7
 SonAni_Duck_ptr:		offsetTableEntry.w SonAni_Duck		;  8 ;   8
 SonAni_Spindash_ptr:		offsetTableEntry.w SonAni_Spindash	;  9 ;   9
-SonAni_Blink_ptr:		offsetTableEntry.w SonAni_Blink		; 10 ;  $A
-SonAni_GetUp_ptr:		offsetTableEntry.w SonAni_GetUp		; 11 ;  $B
-SonAni_Balance2_ptr:		offsetTableEntry.w SonAni_Balance2	; 12 ;  $C
+SonAni_Blink_ptr:		offsetTableEntry.w SonAni_Blank		; 10 ;  $A
+SonAni_GetUp_ptr:		offsetTableEntry.w SonAni_Blank		; 11 ;  $B
+SonAni_Balance2_ptr:		offsetTableEntry.w SonAni_Blank		; 12 ;  $C
 SonAni_Stop_ptr:		offsetTableEntry.w SonAni_Stop		; 13 ;  $D
 SonAni_Float_ptr:		offsetTableEntry.w SonAni_Float		; 14 ;  $E
 SonAni_Float2_ptr:		offsetTableEntry.w SonAni_Float2	; 15 ;  $F
@@ -38564,94 +38578,85 @@ SonAni_Dash2_ptr:		offsetTableEntry.w SonAni_Dash2		; 18 ; $12
 SonAni_Dash3_ptr:		offsetTableEntry.w SonAni_Dash3		; 19 ; $13
 SonAni_Hang2_ptr:		offsetTableEntry.w SonAni_Hang2		; 20 ; $14
 SonAni_Bubble_ptr:		offsetTableEntry.w SonAni_Bubble	; 21 ; $15
-SonAni_DeathBW_ptr:		offsetTableEntry.w SonAni_DeathBW	; 22 ; $16
+SonAni_DeathBW_ptr:		offsetTableEntry.w SonAni_Blank		; 22 ; $16
 SonAni_Drown_ptr:		offsetTableEntry.w SonAni_Drown		; 23 ; $17
 SonAni_Death_ptr:		offsetTableEntry.w SonAni_Death		; 24 ; $18
 SonAni_Hurt_ptr:		offsetTableEntry.w SonAni_Hurt		; 25 ; $19
 SonAni_Hurt2_ptr:		offsetTableEntry.w SonAni_Hurt		; 26 ; $1A
 SonAni_Slide_ptr:		offsetTableEntry.w SonAni_Slide		; 27 ; $1B
 SonAni_Blank_ptr:		offsetTableEntry.w SonAni_Blank		; 28 ; $1C
-SonAni_Balance3_ptr:		offsetTableEntry.w SonAni_Balance3	; 29 ; $1D
-SonAni_Balance4_ptr:		offsetTableEntry.w SonAni_Balance4	; 30 ; $1E
+SonAni_Balance3_ptr:		offsetTableEntry.w SonAni_Blank		; 29 ; $1D
+SonAni_Balance4_ptr:		offsetTableEntry.w SonAni_Blank		; 30 ; $1E
 SupSonAni_Transform_ptr:	offsetTableEntry.w SupSonAni_Transform	; 31 ; $1F
-SonAni_Lying_ptr:		offsetTableEntry.w SonAni_Lying		; 32 ; $20
-SonAni_LieDown_ptr:		offsetTableEntry.w SonAni_LieDown	; 33 ; $21
+SonAni_Lying_ptr:		offsetTableEntry.w SonAni_Blank		; 32 ; $20
+SonAni_LieDown_ptr:		offsetTableEntry.w SonAni_Blank		; 33 ; $21
 
-SonAni_Walk:	dc.b $FF, $F,$10,$11,$12,$13,$14, $D, $E,$FF
+SonAni_Walk:	dc.b $FF,  8,  9, $A, $B,  6,  7,$FF
 	rev02even
-SonAni_Run:	dc.b $FF,$2D,$2E,$2F,$30,$FF,$FF,$FF,$FF,$FF
+SonAni_Run:	dc.b $FF,$1E,$1F,$20,$21,$FF,$FF,$FF
 	rev02even
-SonAni_Roll:	dc.b $FE,$3D,$41,$3E,$41,$3F,$41,$40,$41,$FF
+SonAni_Roll:	dc.b $FE,$2E,$32,$2F,$32,$30,$32,$31,$32,$FF,$FF,$FF,$FF,$FF
 	rev02even
-SonAni_Roll2:	dc.b $FE,$3D,$41,$3E,$41,$3F,$41,$40,$41,$FF
+SonAni_Roll2:	dc.b $FE,$2E,$32,$2F,$32,$30,$32,$31,$32,$FF,$FF,$FF,$FF,$FF
 	rev02even
-SonAni_Push:	dc.b $FD,$48,$49,$4A,$4B,$FF,$FF,$FF,$FF,$FF
+SonAni_Push:	dc.b $FD,$3F,$40,$41,$42,$FF,$FF,$FF
 	rev02even
 SonAni_Wait:
-	dc.b   5,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1
-	dc.b   1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2
-	dc.b   3,  3,  3,  3,  3,  4,  4,  4,  5,  5,  5,  4,  4,  4,  5,  5
-	dc.b   5,  4,  4,  4,  5,  5,  5,  4,  4,  4,  5,  5,  5,  6,  6,  6
-	dc.b   6,  6,  6,  6,  6,  6,  6,  4,  4,  4,  5,  5,  5,  4,  4,  4
-	dc.b   5,  5,  5,  4,  4,  4,  5,  5,  5,  4,  4,  4,  5,  5,  5,  6
-	dc.b   6,  6,  6,  6,  6,  6,  6,  6,  6,  4,  4,  4,  5,  5,  5,  4
-	dc.b   4,  4,  5,  5,  5,  4,  4,  4,  5,  5,  5,  4,  4,  4,  5,  5
-	dc.b   5,  6,  6,  6,  6,  6,  6,  6,  6,  6,  6,  4,  4,  4,  5,  5
-	dc.b   5,  4,  4,  4,  5,  5,  5,  4,  4,  4,  5,  5,  5,  4,  4,  4
-	dc.b   5,  5,  5,  6,  6,  6,  6,  6,  6,  6,  6,  6,  6,  7,  8,  8
-	dc.b   8,  9,  9,  9,$FE,  6
+		dc.b  23,  1,  1,  1,  1,  1,  1,  1
+		dc.b   1,  1,  1,  1,  1,  1,  1,  1
+		dc.b   3,  2,  2,  2,  3,  4,$FE,  2
 	rev02even
-SonAni_Balance:	dc.b   9,$CC,$CD,$CE,$CD,$FF
+SonAni_Balance:	dc.b  31,$3A,$3B,$FF
 	rev02even
-SonAni_LookUp:	dc.b   5, $B, $C,$FE,  1
+SonAni_LookUp:	dc.b  63,  5,$FF
 	rev02even
-SonAni_Duck:	dc.b   5,$4C,$4D,$FE,  1
+SonAni_Duck:	dc.b  63,$39,$FF
 	rev02even
-SonAni_Spindash:dc.b   0,$42,$43,$42,$44,$42,$45,$42,$46,$42,$47,$FF
+SonAni_Spindash:dc.b   0,$4A,$4B,$4A,$4C,$4A,$4D,$4A,$4E,$4A,$4F,$FF
 	rev02even
-SonAni_Blink:	dc.b   1,  2,$FD,  0
+;SonAni_Blink:	dc.b   1,  2,$FD,  0
+;	rev02even
+;SonAni_GetUp:	dc.b   3, $A,$FD,  0
+;	rev02even
+;SonAni_Balance2:dc.b   3,$C8,$C9,$CA,$CB,$FF
+;	rev02even
+SonAni_Stop:	dc.b   7,$37,$38,$FF ; halt/skidding animation
 	rev02even
-SonAni_GetUp:	dc.b   3, $A,$FD,  0
+SonAni_Float:	dc.b   7,$3C,$3F,$FF
 	rev02even
-SonAni_Balance2:dc.b   3,$C8,$C9,$CA,$CB,$FF
+SonAni_Float2:	dc.b   7,$3C,$3D,$53,$3E,$54,$FF
 	rev02even
-SonAni_Stop:	dc.b   5,$D2,$D3,$D4,$D5,$FD,  0 ; halt/skidding animation
+SonAni_Spring:	dc.b  47,$40,$FD,  0
 	rev02even
-SonAni_Float:	dc.b   7,$54,$59,$FF
-	rev02even
-SonAni_Float2:	dc.b   7,$54,$55,$56,$57,$58,$FF
-	rev02even
-SonAni_Spring:	dc.b $2F,$5B,$FD,  0
-	rev02even
-SonAni_Hang:	dc.b   1,$50,$51,$FF
+SonAni_Hang:	dc.b   4,$41,$42,$FF
 	rev02even
 SonAni_Dash2:	dc.b  $F,$43,$43,$43,$FE,  1
 	rev02even
 SonAni_Dash3:	dc.b  $F,$43,$44,$FE,  1
 	rev02even
-SonAni_Hang2:	dc.b $13,$6B,$6C,$FF
+SonAni_Hang2:	dc.b   4,$5C,$5D,$FF
 	rev02even
-SonAni_Bubble:	dc.b  $B,$5A,$5A,$11,$12,$FD,  0 ; breathe
+SonAni_Bubble:	dc.b  11,$56,$56, $A, $B,$FD,  0 ; breathe
 	rev02even
-SonAni_DeathBW:	dc.b $20,$5E,$FF
+;SonAni_DeathBW:	dc.b $20,$5E,$FF
+;	rev02even
+SonAni_Drown:	dc.b  47,$4C,$FF
 	rev02even
-SonAni_Drown:	dc.b $20,$5D,$FF
+SonAni_Death:	dc.b   3,$4D,$FF
 	rev02even
-SonAni_Death:	dc.b $20,$5C,$FF
+SonAni_Hurt:	dc.b   3,$55,$FF
 	rev02even
-SonAni_Hurt:	dc.b $40,$4E,$FF
+SonAni_Slide:	dc.b   7,$55,$57,$FF
 	rev02even
-SonAni_Slide:	dc.b   9,$4E,$4F,$FF
-	rev02even
-SonAni_Blank:	dc.b $77,  0,$FD,  0
-	rev02even
-SonAni_Balance3:dc.b $13,$D0,$D1,$FF
-	rev02even
-SonAni_Balance4:dc.b   3,$CF,$C8,$C9,$CA,$CB,$FE,  4
-	rev02even
-SonAni_Lying:	dc.b   9,  8,  9,$FF
-	rev02even
-SonAni_LieDown:	dc.b   3,  7,$FD,  0
+SonAni_Blank:	dc.b 119,$FD,  0
+;	rev02even
+;SonAni_Balance3:dc.b $13,$D0,$D1,$FF
+;	rev02even
+;SonAni_Balance4:dc.b   3,$CF,$C8,$C9,$CA,$CB,$FE,  4
+;	rev02even
+;SonAni_Lying:	dc.b   9,  8,  9,$FF
+;	rev02even
+;SonAni_LieDown:	dc.b   3,  7,$FD,  0
 	even
 
 ; ---------------------------------------------------------------------------
@@ -38669,9 +38674,9 @@ SuperSonicAniData: offsetTable
 	offsetTableEntry.w SonAni_LookUp	;  7 ;   7
 	offsetTableEntry.w SupSonAni_Duck	;  8 ;   8
 	offsetTableEntry.w SonAni_Spindash	;  9 ;   9
-	offsetTableEntry.w SonAni_Blink		; 10 ;  $A
-	offsetTableEntry.w SonAni_GetUp		; 11 ;  $B
-	offsetTableEntry.w SonAni_Balance2	; 12 ;  $C
+	;offsetTableEntry.w SonAni_Blink		; 10 ;  $A
+	;offsetTableEntry.w SonAni_GetUp		; 11 ;  $B
+	;offsetTableEntry.w SonAni_Balance2	; 12 ;  $C
 	offsetTableEntry.w SonAni_Stop		; 13 ;  $D
 	offsetTableEntry.w SonAni_Float		; 14 ;  $E
 	offsetTableEntry.w SonAni_Float2	; 15 ;  $F
@@ -38681,30 +38686,30 @@ SuperSonicAniData: offsetTable
 	offsetTableEntry.w SonAni_Dash3		; 19 ; $13
 	offsetTableEntry.w SonAni_Hang2		; 20 ; $14
 	offsetTableEntry.w SonAni_Bubble	; 21 ; $15
-	offsetTableEntry.w SonAni_DeathBW	; 22 ; $16
+	;offsetTableEntry.w SonAni_DeathBW	; 22 ; $16
 	offsetTableEntry.w SonAni_Drown		; 23 ; $17
 	offsetTableEntry.w SonAni_Death		; 24 ; $18
 	offsetTableEntry.w SonAni_Hurt		; 25 ; $19
 	offsetTableEntry.w SonAni_Hurt		; 26 ; $1A
 	offsetTableEntry.w SonAni_Slide		; 27 ; $1B
 	offsetTableEntry.w SonAni_Blank		; 28 ; $1C
-	offsetTableEntry.w SonAni_Balance3	; 29 ; $1D
-	offsetTableEntry.w SonAni_Balance4	; 30 ; $1E
+	;offsetTableEntry.w SonAni_Balance3	; 29 ; $1D
+	;offsetTableEntry.w SonAni_Balance4	; 30 ; $1E
 	offsetTableEntry.w SupSonAni_Transform	; 31 ; $1F
 
-SupSonAni_Walk:		dc.b $FF,$77,$78,$79,$7A,$7B,$7C,$75,$76,$FF
+SupSonAni_Walk:		dc.b $FF,$68,$69,$6A,$6B,$66,$67,$FF
 	rev02even
-SupSonAni_Run:		dc.b $FF,$B5,$B9,$FF,$FF,$FF,$FF,$FF,$FF,$FF
+SupSonAni_Run:		dc.b $FF,$7E,$7F,$FF,$FF,$FF,$FF,$FF
 	rev02even
-SupSonAni_Push:		dc.b $FD,$BD,$BE,$BF,$C0,$FF,$FF,$FF,$FF,$FF
+SupSonAni_Push:		dc.b $FD,$86,$87,$88,$89,$FF,$FF,$FF
 	rev02even
-SupSonAni_Stand:	dc.b   7,$72,$73,$74,$73,$FF
+SupSonAni_Stand:	dc.b   7,$63,$64,$65,$64,$FF
 	rev02even
-SupSonAni_Balance:	dc.b   9,$C2,$C3,$C4,$C3,$C5,$C6,$C7,$C6,$FF
+SupSonAni_Balance:	dc.b   9,$8B,$8C,$8D,$8C,$8E,$8F,$90,$8F,$FF
 	rev02even
-SupSonAni_Duck:		dc.b   5,$C1,$FF
+SupSonAni_Duck:		dc.b   5,$8A,$FF
 	rev02even
-SupSonAni_Transform:	dc.b   2,$6D,$6D,$6E,$6E,$6F,$70,$71,$70,$71,$70,$71,$70,$71,$FD,  0
+SupSonAni_Transform:	dc.b   2,$5E,$5E,$5F,$5F,$60,$61,$62,$61,$62,$61,$62,$61,$62,$FD,  0
 	even
 
 ; ---------------------------------------------------------------------------
@@ -78578,10 +78583,10 @@ ObjB0_Init:
 	rts
 ; ===========================================================================
 off_3A294:
-	dc.l MapRUnc_Sonic.frame45
-	dc.l MapRUnc_Sonic.frame46
-	dc.l MapRUnc_Sonic.frame47
-	dc.l MapRUnc_Sonic.frame48
+	dc.l DPLC_69e6_45
+	dc.l DPLC_69e6_46
+	dc.l DPLC_69e6_47
+	dc.l DPLC_69e6_48
 
 map_piece macro width,height
 	dc.l copysrc,copydst
