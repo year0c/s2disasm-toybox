@@ -423,6 +423,7 @@ GameClrRAM:
 		clr.b	(SegaCD_Mode).w
 	endif
 
+	jsr	(InitDMAQueue).l
 	bsr.w	VDPSetupGame
 	bsr.w	JmpTo_SoundDriverLoad
 	bsr.w	JoypadInit
@@ -452,6 +453,7 @@ GameMode_LevelSelect:	bra.w	LevelSelectMenu		; Level select mode
 ; loc_3CE:
 ChecksumError:
 	move.l	d1,-(sp)
+	jsr	(InitDMAQueue).l
 	bsr.w	VDPSetupGame
 	move.l	(sp)+,d1
 	move.l	#vdpComm($0000,CRAM,WRITE),(VDP_control_port).l ; set VDP to CRAM write
@@ -1580,99 +1582,7 @@ PlaneMapToVRAM_H80_SpecialStage:
 	rts
 ; End of function PlaneMapToVRAM_H80_SpecialStage
 
-
-; ---------------------------------------------------------------------------
-; Subroutine for queueing VDP commands (seems to only queue transfers to VRAM),
-; to be issued the next time ProcessDMAQueue is called.
-; Can be called a maximum of 18 times before the buffer needs to be cleared
-; by issuing the commands (this subroutine DOES check for overflow)
-; ---------------------------------------------------------------------------
-
-; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
-
-; sub_144E: DMA_68KtoVRAM: QueueCopyToVRAM: QueueVDPCommand: Add_To_DMA_Queue:
-QueueDMATransfer:
-	movea.l	(VDP_Command_Buffer_Slot).w,a1
-	cmpa.w	#VDP_Command_Buffer_Slot,a1
-	beq.s	.return ; return if there's no more room in the buffer
-
-	; piece together some VDP commands and store them for later...
-	move.w	#$9300,d0 ; command to specify DMA transfer length & $00FF
-	move.b	d3,d0
-	move.w	d0,(a1)+ ; store command
-
-	move.w	#$9400,d0 ; command to specify DMA transfer length & $FF00
-	lsr.w	#8,d3
-	move.b	d3,d0
-	move.w	d0,(a1)+ ; store command
-
-	move.w	#$9500,d0 ; command to specify source address & $0001FE
-	lsr.l	#1,d1
-	move.b	d1,d0
-	move.w	d0,(a1)+ ; store command
-
-	move.w	#$9600,d0 ; command to specify source address & $01FE00
-	lsr.l	#8,d1
-	move.b	d1,d0
-	move.w	d0,(a1)+ ; store command
-
-	move.w	#$9700,d0 ; command to specify source address & $FE0000
-	lsr.l	#8,d1
-	;andi.b	#$7F,d1		; this instruction safely allows source to be in RAM; S3K added this
-	move.b	d1,d0
-	move.w	d0,(a1)+ ; store command
-
-	andi.l	#$FFFF,d2 ; command to specify destination address and begin DMA
-	lsl.l	#2,d2
-	lsr.w	#2,d2
-	swap	d2
-	ori.l	#vdpComm($0000,VRAM,DMA),d2 ; set bits to specify VRAM transfer
-	move.l	d2,(a1)+ ; store command
-
-	move.l	a1,(VDP_Command_Buffer_Slot).w ; set the next free slot address
-	cmpa.w	#VDP_Command_Buffer_Slot,a1
-	beq.s	.return ; return if there's no more room in the buffer
-	move.w	#0,(a1) ; put a stop token at the end of the used part of the buffer
-; return_14AA: QueueDMATransfer_Done:
-.return:
-	rts
-; End of function QueueDMATransfer
-
-
-; ---------------------------------------------------------------------------
-; Subroutine for issuing all VDP commands that were queued
-; (by earlier calls to QueueDMATransfer)
-; Resets the queue when it's done
-; ---------------------------------------------------------------------------
-
-; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
-
-; sub_14AC: CopyToVRAM: IssueVDPCommands: Process_DMA: Process_DMA_Queue:
-ProcessDMAQueue:
-	lea	(VDP_control_port).l,a5
-	lea	(VDP_Command_Buffer).w,a1
-; loc_14B6: ProcessDMAQueue_Loop:
-.loop
-	move.w	(a1)+,d0
-	beq.s	.done ; branch if we reached a stop token
-	; issue a set of VDP commands...
-	move.w	d0,(a5)		; transfer length
-	move.w	(a1)+,(a5)	; transfer length
-	move.w	(a1)+,(a5)	; source address
-	move.w	(a1)+,(a5)	; source address
-	move.w	(a1)+,(a5)	; source address
-	move.w	(a1)+,(a5)	; destination
-	move.w	(a1)+,(a5)	; destination
-	cmpa.w	#VDP_Command_Buffer_Slot,a1
-	bne.s	.loop ; loop if we haven't reached the end of the buffer
-; loc_14CE: ProcessDMAQueue_Done:
-.done:
-	move.w	#0,(VDP_Command_Buffer).w
-	move.l	#VDP_Command_Buffer,(VDP_Command_Buffer_Slot).w
-	rts
-; End of function ProcessDMAQueue
-
-
+	include	"DMA-Queue.asm"
 
 ; ---------------------------------------------------------------------------
 ; START OF NEMESIS DECOMPRESSOR
@@ -4742,8 +4652,7 @@ Level_InitWater:
 	move.w	#$8C87,(a6)			; H res 40 cells, double res interlace
 +
 	move.w	(Hint_counter_reserve).w,(a6)
-	clr.w	(VDP_Command_Buffer).w
-	move.l	#VDP_Command_Buffer,(VDP_Command_Buffer_Slot).w
+	ResetDMAQueue
 	tst.b	(Water_flag).w	; does level have water?
 	beq.s	Level_LoadPal	; if not, branch
 	move.w	#$8014,(a6)	; H-INT enabled
@@ -6453,6 +6362,7 @@ SpecialStage:
 	move.w	(VDP_Reg1_val).w,d0
 	andi.b	#$BF,d0
 	move.w	d0,(VDP_control_port).l
+	ResetDMAQueue
 
 ; /------------------------------------------------------------------------\
 ; | We're gonna zero-fill a bunch of VRAM regions. This was done by macro, |
@@ -6490,8 +6400,7 @@ SpecialStage:
 	; overwriting the special stage's graphics.
 	; In a bizarre twice of luck, the above bug actually nullifies this bug: the excessive
 	; SS_Shared_RAM clear sets VDP_Command_Buffer to 0, just like the below code.
-	clr.w	(VDP_Command_Buffer).w
-	move.l	#VDP_Command_Buffer,(VDP_Command_Buffer_Slot).w
+	ResetDMAQueue
     endif
 
 	move	#$2300,sr
@@ -6640,8 +6549,7 @@ SpecialStage:
 	move.w	#$8C81,(a6)		; H res 40 cells, no interlace, S/H disabled
 	bsr.w	ClearScreen
 	jsrto	JmpTo_Hud_Base
-	clr.w	(VDP_Command_Buffer).w
-	move.l	#VDP_Command_Buffer,(VDP_Command_Buffer_Slot).w
+	ResetDMAQueue
 	move	#$2300,sr
 	moveq	#PalID_Result,d0
 	bsr.w	PalLoad_Now
@@ -10223,8 +10131,7 @@ ContinueScreen:
 	; around the next frame. The problem here is, the art is queued, you
 	; die, get a Game Over, advance to the Continue screen, and then
 	; finally the art is loaded.
-	clr.w	(VDP_Command_Buffer).w
-	move.l	#VDP_Command_Buffer,(VDP_Command_Buffer_Slot).w
+	ResetDMAQueue
 
 	; The game leaves this flag set after a Game Over, which causes
 	; Sonic to animate incorrectly.
@@ -10647,8 +10554,7 @@ TwoPlayerResults:
     else
 	bsr.w	PlaneMapToVRAM_H40
     endif
-	clr.w	(VDP_Command_Buffer).w
-	move.l	#VDP_Command_Buffer,(VDP_Command_Buffer_Slot).w
+	ResetDMAQueue
 	clr.b	(Level_started_flag).w
 	clr.w	(Anim_Counters).w
 	lea	(Anim_SonicMilesBG).l,a2
@@ -11618,8 +11524,7 @@ MenuScreen:
 	clearRAM Object_RAM,Object_RAM_End
 
 	; load background + graphics of font/LevSelPics
-	clr.w	(VDP_Command_Buffer).w
-	move.l	#VDP_Command_Buffer,(VDP_Command_Buffer_Slot).w
+	ResetDMAQueue
 	move.l	#vdpComm(tiles_to_bytes(ArtTile_ArtNem_FontStuff),VRAM,WRITE),(VDP_control_port).l
 	lea	(ArtNem_FontStuff).l,a0
 	bsr.w	NemDec
@@ -38720,40 +38625,19 @@ SupSonAni_Transform:	dc.b   2,$5E,$5E,$5F,$5F,$60,$61,$62,$61,$62,$61,$62,$61,$6
 
 ; loc_1B848:
 LoadSonicDynPLC:
-
-	moveq	#0,d0
-	move.b	mapping_frame(a0),d0	; load frame number
+	move.b	mapping_frame(a0),d0		; get Sonic's current frame
 ; loc_1B84E:
 LoadSonicDynPLC_Part2:
-	cmp.b	(Sonic_LastLoadedDPLC).w,d0
-	beq.s	return_1B89A
-	move.b	d0,(Sonic_LastLoadedDPLC).w
-	lea	(MapRUnc_Sonic).l,a2
-	add.w	d0,d0
-	adda.w	(a2,d0.w),a2
-	move.w	(a2)+,d5
-	subq.w	#1,d5
-	bmi.s	return_1B89A
-	move.w	#tiles_to_bytes(ArtTile_ArtUnc_Sonic),d4
-; loc_1B86E:
-SPLC_ReadEntry:
-	moveq	#0,d1
-	move.w	(a2)+,d1
-	move.w	d1,d3
-	lsr.w	#8,d3
-	andi.w	#$F0,d3
-	addi.w	#$10,d3
-	andi.w	#$FFF,d1
-	lsl.l	#5,d1
-	addi.l	#ArtUnc_Sonic,d1
-	move.w	d4,d2
-	add.w	d3,d4
-	add.w	d3,d4
-	jsr	(QueueDMATransfer).l
-	dbf	d5,SPLC_ReadEntry	; repeat for number of entries
+	cmp.b	(Sonic_LastLoadedDPLC).w,d0	; has the frame changed?
+	beq.s	return_1B89A			; if not, nothing to do
+	move.b	d0,(Sonic_LastLoadedDPLC).w	; update cached frame number
+	lea	(MapRUnc_Sonic).l,a2		; load Sonic DPLC table
+	move.w	#tiles_to_bytes(ArtTile_ArtUnc_Sonic),d4	; starting VRAM tile
+	move.l	#ArtUnc_Sonic,d6		; base Sonic art pointer
+	jmp	(LoadDynPLC).l			; load DPLC
 
 return_1B89A:
-	rts
+	rts					; return
 ; ===========================================================================
 
 	jmpTos0 JmpTo_KillCharacter
@@ -41865,19 +41749,14 @@ TailsAni_SwimTired:	dc.b	$B, $99, $9A, $9B, $9A, $FF
 
 ; loc_1D184:
 LoadTailsTailsDynPLC:
-	moveq	#0,d0
-	move.b	mapping_frame(a0),d0
-	cmp.b	(TailsTails_LastLoadedDPLC).w,d0
-	beq.s	return_1D1FE
-	move.b	d0,(TailsTails_LastLoadedDPLC).w
-	lea	(MapRUnc_Tails).l,a2
-	add.w	d0,d0
-	adda.w	(a2,d0.w),a2
-	move.w	(a2)+,d5
-	subq.w	#1,d5
-	bmi.s	return_1D1FE
-	move.w	#tiles_to_bytes(ArtTile_ArtUnc_Tails_Tails),d4
-	bra.s	TPLC_ReadEntry
+	move.b	mapping_frame(a0),d0		; get Tails' Tails' current frame
+	cmp.b	(TailsTails_LastLoadedDPLC).w,d0	; has the frame changed?
+	beq.s	return_1D1FE			; if not, nothing to do
+	move.b	d0,(TailsTails_LastLoadedDPLC).w	; update cached frame number
+	lea	(MapRUnc_Tails).l,a2		; load Tails' Tails DPLC table
+	move.w	#tiles_to_bytes(ArtTile_ArtUnc_Tails_Tails),d4	; starting VRAM tile
+	move.l	#ArtUnc_Tails,d6		; base Tails' Tails art pointer
+	jmp	(LoadDynPLC).l			; load DPLC
 
 ; ---------------------------------------------------------------------------
 ; Tails pattern loading subroutine
@@ -41887,39 +41766,19 @@ LoadTailsTailsDynPLC:
 
 ; loc_1D1AC:
 LoadTailsDynPLC:
-	moveq	#0,d0
-	move.b	mapping_frame(a0),d0	; load frame number
+	move.b	mapping_frame(a0),d0		; get Tails's current frame
 ; loc_1D1B2:
 LoadTailsDynPLC_Part2:
-	cmp.b	(Tails_LastLoadedDPLC).w,d0
-	beq.s	return_1D1FE
-	move.b	d0,(Tails_LastLoadedDPLC).w
-	lea	(MapRUnc_Tails).l,a2
-	add.w	d0,d0
-	adda.w	(a2,d0.w),a2
-	move.w	(a2)+,d5
-	subq.w	#1,d5
-	bmi.s	return_1D1FE
-	move.w	#tiles_to_bytes(ArtTile_ArtUnc_Tails),d4
-; loc_1D1D2:
-TPLC_ReadEntry:
-	moveq	#0,d1
-	move.w	(a2)+,d1
-	move.w	d1,d3
-	lsr.w	#8,d3
-	andi.w	#$F0,d3
-	addi.w	#$10,d3
-	andi.w	#$FFF,d1
-	lsl.l	#5,d1
-	addi.l	#ArtUnc_Tails,d1
-	move.w	d4,d2
-	add.w	d3,d4
-	add.w	d3,d4
-	jsr	(QueueDMATransfer).l
-	dbf	d5,TPLC_ReadEntry	; repeat for number of entries
+	cmp.b	(Tails_LastLoadedDPLC).w,d0	; has the frame changed?
+	beq.s	return_1D1FE			; if not, nothing to do
+	move.b	d0,(Tails_LastLoadedDPLC).w	; update cached frame number
+	lea	(MapRUnc_Tails).l,a2		; load Tails DPLC table
+	move.w	#tiles_to_bytes(ArtTile_ArtUnc_Tails),d4	; starting VRAM tile
+	move.l	#ArtUnc_Tails,d6		; base Tails art pointer
+	jmp	(LoadDynPLC).l			; load DPLC
 
 return_1D1FE:
-	rts
+	rts					; return
 ; ===========================================================================
 ; ----------------------------------------------------------------------------
 ; Object 05 - Tails' tails
@@ -43093,33 +42952,14 @@ loc_1DEE0:
 ; ===========================================================================
 ; loc_1DEE4:
 Obj08_LoadDustOrSplashArt:
-	moveq	#0,d0
-	move.b	mapping_frame(a0),d0
-	cmp.b	obj08_previous_frame(a0),d0
-	beq.s	return_1DF36
-	move.b	d0,obj08_previous_frame(a0)
-	lea	(Obj08_MapRUnc_1E074).l,a2
-	add.w	d0,d0
-	adda.w	(a2,d0.w),a2
-	move.w	(a2)+,d5
-	subq.w	#1,d5
-	bmi.s	return_1DF36
-	move.w	obj08_vram_address(a0),d4
-
--	moveq	#0,d1
-	move.w	(a2)+,d1
-	move.w	d1,d3
-	lsr.w	#8,d3
-	andi.w	#$F0,d3
-	addi.w	#$10,d3
-	andi.w	#$FFF,d1
-	lsl.l	#5,d1
-	addi.l	#ArtUnc_SplashAndDust,d1
-	move.w	d4,d2
-	add.w	d3,d4
-	add.w	d3,d4
-	jsr	(QueueDMATransfer).l
-	dbf	d5,-
+	move.b	mapping_frame(a0),d0		; get current frame
+	cmp.b	obj08_previous_frame(a0),d0	; has the frame changed?
+	beq.s	return_1DF36			; if not, nothing to do
+	move.b	d0,obj08_previous_frame(a0)	; update cached frame number
+	lea	(Obj08_MapRUnc_1E074).l,a2	; load DPLC table
+	move.w	obj08_vram_address(a0),d4	; starting VRAM tile
+	move.l	#ArtUnc_SplashAndDust,d6	; base art pointer
+	jmp	(LoadDynPLC).l			; load DPLC
 
 return_1DF36:
 	rts
