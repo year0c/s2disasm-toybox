@@ -38473,7 +38473,7 @@ SAnim_Tumble:
 	andi.b	#~(1<<render_flags.x_flip|1<<render_flags.y_flip),render_flags(a0)
 	addi.b	#$B,d0
 	divu.w	#$16,d0
-	addi.b	#$5F,d0
+	addi.b	#$50,d0
 	move.b	d0,mapping_frame(a0)
 	move.b	#0,anim_frame_duration(a0)
 	rts
@@ -38495,7 +38495,7 @@ loc_1B566:
 
 loc_1B572:
 	divu.w	#$16,d0
-	addi.b	#$5F,d0
+	addi.b	#$50,d0
 	move.b	d0,mapping_frame(a0)
 	move.b	#0,anim_frame_duration(a0)
 	rts
@@ -38606,11 +38606,11 @@ SonAni_Wait:
 		dc.b   1,  1,  1,  1,  1,  1,  1,  1
 		dc.b   3,  2,  2,  2,  3,  4,$FE,  2
 	rev02even
-SonAni_Balance:	dc.b  31,$3A,$3B,$FF
+SonAni_Balance:	dc.b  31,$36,$37,$FF
 	rev02even
 SonAni_LookUp:	dc.b  63,  5,$FF
 	rev02even
-SonAni_Duck:	dc.b  63,$39,$FF
+SonAni_Duck:	dc.b  63,$35,$FF
 	rev02even
 SonAni_Spindash:dc.b   0,$4A,$4B,$4A,$4C,$4A,$4D,$4A,$4E,$4A,$4F,$FF
 	rev02even
@@ -38620,15 +38620,15 @@ SonAni_Spindash:dc.b   0,$4A,$4B,$4A,$4C,$4A,$4D,$4A,$4E,$4A,$4F,$FF
 ;	rev02even
 ;SonAni_Balance2:dc.b   3,$C8,$C9,$CA,$CB,$FF
 ;	rev02even
-SonAni_Stop:	dc.b   7,$37,$38,$FF ; halt/skidding animation
+SonAni_Stop:	dc.b   7,$33,$34,$FF ; halt/skidding animation
 	rev02even
-SonAni_Float:	dc.b   7,$3C,$3F,$FF
+SonAni_Float:	dc.b   7,$38,$3B,$FF
 	rev02even
-SonAni_Float2:	dc.b   7,$3C,$3D,$53,$3E,$54,$FF
+SonAni_Float2:	dc.b   7,$38,$39,$45,$3A,$46,$FF
 	rev02even
-SonAni_Spring:	dc.b  47,$40,$FD,  0
+SonAni_Spring:	dc.b  47,$3C,$FD,  0
 	rev02even
-SonAni_Hang:	dc.b   4,$41,$42,$FF
+SonAni_Hang:	dc.b   4,$5C,$5D,$FF
 	rev02even
 SonAni_Dash2:	dc.b  $F,$43,$43,$43,$FE,  1
 	rev02even
@@ -38636,17 +38636,17 @@ SonAni_Dash3:	dc.b  $F,$43,$44,$FE,  1
 	rev02even
 SonAni_Hang2:	dc.b   4,$5C,$5D,$FF
 	rev02even
-SonAni_Bubble:	dc.b  11,$56,$56, $A, $B,$FD,  0 ; breathe
+SonAni_Bubble:	dc.b  11,$48,$48, $A, $B,$FD,  0 ; breathe
 	rev02even
 ;SonAni_DeathBW:	dc.b $20,$5E,$FF
 ;	rev02even
-SonAni_Drown:	dc.b  47,$4C,$FF
+SonAni_Drown:	dc.b  47,$43,$FF
 	rev02even
-SonAni_Death:	dc.b   3,$4D,$FF
+SonAni_Death:	dc.b   3,$44,$FF
 	rev02even
-SonAni_Hurt:	dc.b   3,$55,$FF
+SonAni_Hurt:	dc.b   3,$47,$FF
 	rev02even
-SonAni_Slide:	dc.b   7,$55,$57,$FF
+SonAni_Slide:	dc.b   7,$47,$49,$FF
 	rev02even
 SonAni_Blank:	dc.b 119,$FD,  0
 ;	rev02even
