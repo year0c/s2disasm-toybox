@@ -16783,7 +16783,18 @@ DrawBlockColumn_Advanced:
 	moveq	#0,d0
 	move.b	(a0)+,d0
 	btst	d0,(a2)
-	
+	beq.s	+
+
+	; Get the correct camera and draw this block.
+	movea.w	BGCameraLookup(pc,d0.w),a3	; Camera, either BG, BG2 or BG3 depending on Y
+	movem.l	d4-d5/a0,-(sp)
+	movem.l	d4-d5,-(sp)
+	bsr.w	GetBlock
+	movem.l	(sp)+,d4-d5
+	bsr.w	CalculateVRAMAddressOfBlockForPlayer1
+	bsr.w	ProcessAndWriteBlock_Vertical
+	movem.l	(sp)+,d4-d5/a0
++
 	; Move onto the next block down.
 	addi.w	#block_height,d4
 	dbf	d6,-
@@ -22698,7 +22709,11 @@ SolidObject_Monitor_Sonic:
 ; sub_12768:
 SolidObject_Monitor_Tails:
 	btst	d6,status(a0)			; is Tails standing on the monitor?
-	beq.w	SolidObject_cont		; if not, branch
+	bne.s	Obj26_ChkOverEdge		; if yes, branch
+	; monitors always behave as solid for Tails
+	cmpi.b	#AniIDSonAni_Roll,anim(a1)	; is Tails spinning?
+	bne.w	SolidObject_cont		; if not, branch
+	rts
 ; End of function SolidObject_Monitor_Tails
 
 ; ---------------------------------------------------------------------------
@@ -22969,9 +22984,15 @@ shield_monitor:
 	addq.w	#1,(a2)
 	bset	#status_secondary.shield,status_secondary(a1)	; give shield status
 	move.w	#SndID_Shield,d0
-	jsr	(PlaySound).l
+	tst.b	parent+1(a0)
+	bne.s	+
 	move.b	#ObjID_Shield,(Sonic_Shield+id).w ; load Obj38 (shield) at $FFFFD180
 	move.w	a1,(Sonic_Shield+parent).w
+	rts
+; ---------------------------------------------------------------------------
++	; give shield to sidekick
+	move.b	#ObjID_Shield,(Tails_Shield+id).w ; load Obj38 (shield) at $FFFFD1C0
+	move.w	a1,(Tails_Shield+parent).w
 	rts
 ; ===========================================================================
 ; ---------------------------------------------------------------------------
@@ -22991,8 +23012,15 @@ invincible_monitor:
 	move.w	#MusID_Invincible,d0
 	jsr	(PlayMusic).l
 +
+	tst.b	parent+1(a0)
+	bne.s	+
 	move.b	#ObjID_InvStars,(Sonic_InvincibilityStars+id).w ; load Obj35 (invincibility stars) at $FFFFD200
 	move.w	a1,(Sonic_InvincibilityStars+parent).w
+	rts
+; ---------------------------------------------------------------------------
++	; give invincibility to sidekick
+	move.b	#ObjID_InvStars,(Tails_InvincibilityStars+id).w ; load Obj35 (invincibility stars) at $FFFFD300
+	move.w	a1,(Tails_InvincibilityStars+parent).w
 +
 	rts
 ; ===========================================================================
