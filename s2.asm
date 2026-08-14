@@ -22985,15 +22985,9 @@ shield_monitor:
 	addq.w	#1,(a2)
 	bset	#status_secondary.shield,status_secondary(a1)	; give shield status
 	move.w	#SndID_Shield,d0
-	tst.b	parent+1(a0)
-	bne.s	+
+	jsr	(PlaySound).l
 	move.b	#ObjID_Shield,(Sonic_Shield+id).w ; load Obj38 (shield) at $FFFFD180
 	move.w	a1,(Sonic_Shield+parent).w
-	rts
-; ---------------------------------------------------------------------------
-+	; give shield to sidekick
-	move.b	#ObjID_Shield,(Tails_Shield+id).w ; load Obj38 (shield) at $FFFFD1C0
-	move.w	a1,(Tails_Shield+parent).w
 	rts
 ; ===========================================================================
 ; ---------------------------------------------------------------------------
@@ -23013,15 +23007,8 @@ invincible_monitor:
 	move.w	#MusID_Invincible,d0
 	jsr	(PlayMusic).l
 +
-	tst.b	parent+1(a0)
-	bne.s	+
 	move.b	#ObjID_InvStars,(Sonic_InvincibilityStars+id).w ; load Obj35 (invincibility stars) at $FFFFD200
 	move.w	a1,(Sonic_InvincibilityStars+parent).w
-	rts
-; ---------------------------------------------------------------------------
-+	; give invincibility to sidekick
-	move.b	#ObjID_InvStars,(Tails_InvincibilityStars+id).w ; load Obj35 (invincibility stars) at $FFFFD300
-	move.w	a1,(Tails_InvincibilityStars+parent).w
 +
 	rts
 ; ===========================================================================
