@@ -84991,10 +84991,10 @@ PlrList_ResultsTails_Dup_End
 ;---------------------------------------------------------------------------------------
 ; Collision Data
 ;---------------------------------------------------------------------------------------
-ColCurveMap:		BINCLUDE	"collision/Curve and resistance mapping.bin"
+ColCurveMap:		BINCLUDE	"collision/Curve and resistance mapping.unc"
 	even
-ColArrayVertical:	BINCLUDE	"collision/Collision array - Vertical.bin"
-ColArrayHorizontal:	BINCLUDE	"collision/Collision array - Horizontal.bin"
+ColArrayVertical:	BINCLUDE	"collision/Collision array - Vertical.unc"
+ColArrayHorizontal:	BINCLUDE	"collision/Collision array - Horizontal.unc"
 	even
 
 ColP_EHZHTZ:	BINCLUDE	"collision/EHZ and HTZ primary 16x16 collision index.unc"
