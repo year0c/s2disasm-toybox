@@ -22873,6 +22873,7 @@ Obj2E_Raise:
 Obj2E_Types:	offsetTable
 		offsetTableEntry.w robotnik_monitor	; 0 - Static
 		offsetTableEntry.w sonic_1up		; 1 - Sonic 1-up
+		offsetTableEntry.w sonic_1up		; 2 - Tails 1-up
 		offsetTableEntry.w robotnik_monitor	; 3 - Robotnik
 		offsetTableEntry.w super_ring		; 4 - Super Ring
 		offsetTableEntry.w super_shoes		; 5 - Speed Shoes
@@ -41065,6 +41066,7 @@ Obj44_BumpCharacter:
 +
 	moveq	#1,d0
 	movea.w	a1,a3
+	jsr	(AddPoints).l
 	bsr.w	AllocateObject
 	bne.s	return_1F83C
 	_move.b	#ObjID_Points,id(a1) ; load obj29
@@ -55148,6 +55150,7 @@ loc_2BE5E:
 	jsr	(PlaySound).l
 	moveq	#10,d0
 	movea.w	a1,a3
+	jsr	(AddPoints).l
 	jsrto	JmpTo10_AllocateObject
 	bne.s	+	; rts
 	_move.b	#ObjID_Points,id(a1) ; load obj29
@@ -56096,6 +56099,7 @@ loc_2C806:
 	moveq	#50,d0
 
 loc_2C85C:
+	jsr	(AddPoints).l
 	jsrto	JmpTo11_AllocateObject
 	bne.s	loc_2C87E
 	_move.b	#ObjID_Points,id(a1) ; load obj29
@@ -81286,6 +81290,7 @@ loc_3F802:
 
 loc_3F81C:
 	movea.w	a0,a3
+	bsr.w	AddPoints
 	_move.b	#ObjID_Explosion,id(a1) ; load obj
 	move.b	#0,routine(a1)
 
