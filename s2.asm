@@ -22997,7 +22997,7 @@ shield_monitor:
 invincible_monitor:
 	addq.w	#1,(a2)
 	tst.b	(Super_Sonic_flag).w	; is Sonic super?
-	bne.s	++	; rts		; if yes, branch
+	bne.s	+	; rts		; if yes, branch
 	bset	#status_secondary.invincible,status_secondary(a1)	; give invincibility status
 	move.w	#20*60,invincibility_time(a1) ; 20 seconds
 	tst.b	(Current_Boss_ID).w	; don't change music during boss battles
@@ -23006,9 +23006,6 @@ invincible_monitor:
 	bls.s	+
 	move.w	#MusID_Invincible,d0
 	jsr	(PlayMusic).l
-+
-	move.b	#ObjID_InvStars,(Sonic_InvincibilityStars+id).w ; load Obj35 (invincibility stars) at $FFFFD200
-	move.w	a1,(Sonic_InvincibilityStars+parent).w
 +
 	rts
 ; ===========================================================================
